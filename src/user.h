@@ -1,5 +1,9 @@
 #include "expense.h"
 
+/**
+ * @brief A user that makes expenses
+ * 
+ */
 typedef struct user
 {
   signed char userName[256];
