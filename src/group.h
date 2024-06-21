@@ -12,6 +12,16 @@ typedef struct group
 } group;
 
 /**
+ * @brief Create a new Group
+ * 
+ * @param grpName {const signed char} : group name
+ * @param members {user} : members of the group
+ * @param numberOfMembers {int} : number of members
+ * @return group* : new group
+ */
+group *createGroup(const signed char *grpName);
+
+/**
  * @brief Initialize a group's member list
  * 
  * @param grp {group} : targeted group
@@ -26,4 +36,4 @@ void initGroupMembers(group *grp, user *members, int numberOfMembers);
  * @param grp {group} : targeted group
  * @param newMember {user} : user to add
  */
-void addGroupMember(group *grp, user newMember);
+void addGroupMember(group *grp, user *newMember);
