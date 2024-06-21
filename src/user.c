@@ -1,8 +1,10 @@
 #include "user.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+// Creates a new user : see user.h
 user *createUser(const signed char *usrName)
 {
   user *newUser = (user *)malloc(sizeof(user));
@@ -13,10 +15,17 @@ user *createUser(const signed char *usrName)
   }
   
   // Changes new user's name and asusring null-termination
-  strncpy(newUser->userName, usrName, sizeof(newUser->userName) - 1);
+  strncpy((char *)&newUser->userName, (char *)&usrName, sizeof(newUser->userName) - 1);
   newUser->userName[sizeof(newUser->userName) - 1] = '\0';
+
+  newUser->expenseList = NULL;
+  newUser->expenseCount = 0;
+  newUser->expenseSum = 0;
+
+  return newUser;
 }
 
+// Adds an expense to user expense list : see user.h
 void addExpense(user *usr, expense exp)
 {
   expense *newExpenseList = (expense *)realloc(usr->expenseList, (usr->expenseCount + 1) * sizeof(expense));
@@ -38,6 +47,7 @@ void addExpense(user *usr, expense exp)
   sumUserExpenses(usr);
 }
 
+// Sums the given user expenses : see user.h
 int sumUserExpenses(user *usr)
 {
   int expSum = 0;
