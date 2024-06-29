@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-expense *createExpense(const signed char *expName, int cost)
+expense *createExpense(const signed char *expName, float cost)
 {
   // Allocate memory
   expense *newExpense = (expense *)malloc(sizeof(expense));
@@ -15,7 +15,7 @@ expense *createExpense(const signed char *expName, int cost)
   }
 
   // Change expense name and ensure null-termination
-  strncpy(newExpense->expenseName, expName, sizeof(newExpense->expenseName) - 1);
+  strncpy((char *)newExpense->expenseName, (char *)expName, sizeof(newExpense->expenseName) - 1);
   newExpense->expenseName[sizeof(newExpense->expenseName) - 1] = '\0';
 
   newExpense->expenseCost = cost;

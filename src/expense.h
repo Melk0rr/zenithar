@@ -6,7 +6,7 @@
 typedef struct expense
 {
   signed char expenseName[256];
-  int expenseCost;
+  float expenseCost;
 } expense;
 
 /**
@@ -16,4 +16,4 @@ typedef struct expense
  * @param cost {int} cost of the expense
  * @return struct expense* 
  */
-expense *createExpense(const signed char *expName, int cost);
+expense *createExpense(const signed char *expName, float cost);
