@@ -16,7 +16,7 @@ typedef struct user
   int expenseCount;
   
   // Sum of the user's expenses
-  int expenseSum;
+  float expenseSum;
 } user;
 
 /**
@@ -41,7 +41,7 @@ void addExpense(user *usr, expense exp);
  * @param usr {user} : target user
  * @return int : sum of the expenses
  */
-int sumUserExpenses(user *usr);
+float sumUserExpenses(user *usr);
 
 /**
  * @brief Resets expenses for the given user

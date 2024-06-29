@@ -48,9 +48,9 @@ void addExpense(user *usr, expense exp)
 }
 
 // Sums the given user expenses : see user.h
-int sumUserExpenses(user *usr)
+float sumUserExpenses(user *usr)
 {
-  int expSum = 0;
+  float expSum = 0;
 
   for (int i = 0; i < usr->expenseCount - 1; i++)
   {
