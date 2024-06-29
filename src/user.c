@@ -4,6 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+// #########################################################
+// User creation / initialization
+
 // Creates a new user : see user.h
 user *createUser(const signed char *usrName)
 {
@@ -15,7 +19,7 @@ user *createUser(const signed char *usrName)
   }
   
   // Changes new user's name and asusring null-termination
-  strncpy((char *)&newUser->userName, (char *)&usrName, sizeof(newUser->userName) - 1);
+  strncpy((char *)&newUser->userName, (char *)usrName, sizeof(newUser->userName) - 1);
   newUser->userName[sizeof(newUser->userName) - 1] = '\0';
 
   newUser->expenseList = NULL;
@@ -26,9 +30,9 @@ user *createUser(const signed char *usrName)
 }
 
 // Adds an expense to user expense list : see user.h
-void addExpense(user *usr, expense exp)
+void addNewUserExpense(user *usr, const signed char *expName, float expCost)
 {
-  expense *newExpenseList = (expense *)realloc(usr->expenseList, (usr->expenseCount + 1) * sizeof(expense));
+  expense **newExpenseList = realloc(usr->expenseList, (usr->expenseCount + 1) * sizeof(expense));
   if (newExpenseList == NULL)
   {
     fprintf(stderr, "addExpense::Memory allocation failed !");
@@ -39,7 +43,8 @@ void addExpense(user *usr, expense exp)
   usr->expenseList = newExpenseList;
 
   // Add new expense
-  usr->expenseList[usr->expenseCount] = exp;
+  expense newExp = *createExpense(expName, expCost);
+  usr->expenseList[usr->expenseCount] = &newExp;
 
   // Update expense count
   usr->expenseCount++;
@@ -47,18 +52,21 @@ void addExpense(user *usr, expense exp)
   sumUserExpenses(usr);
 }
 
+// #########################################################
+// User expenses
+
 // Sums the given user expenses : see user.h
-float sumUserExpenses(user *usr)
+void sumUserExpenses(user *usr)
 {
   float expSum = 0;
 
-  for (int i = 0; i < usr->expenseCount - 1; i++)
+  for (int i = 0; i < usr->expenseCount; i++)
   {
-    expSum += usr->expenseList[i].expenseCost;
+    expense *exp = usr->expenseList[i];
+    expSum += exp->expenseCost;
   }
   
   usr->expenseSum = expSum;
-  return usr->expenseSum;
 }
 
 // Resets given user expenses : see user.h

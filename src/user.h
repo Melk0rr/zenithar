@@ -10,7 +10,7 @@ typedef struct user
   signed char userName[25];
   
   // List of the user expenses
-  expense *expenseList;
+  expense **expenseList;
   
   // Number of expenses for memory allocation
   int expenseCount;
@@ -33,7 +33,7 @@ user *createUser(const signed char *usrName);
  * @param usr {user} : user to whom add the new expense
  * @param exp {expense} : new expense to add
  */
-void addExpense(user *usr, expense exp);
+void addNewUserExpense(user *usr, const signed char *expName, float expCost);
 
 /**
  * @brief Calculates the sum of a user's expenses
@@ -41,7 +41,7 @@ void addExpense(user *usr, expense exp);
  * @param usr {user} : target user
  * @return int : sum of the expenses
  */
-float sumUserExpenses(user *usr);
+void sumUserExpenses(user *usr);
 
 /**
  * @brief Resets expenses for the given user
