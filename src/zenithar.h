@@ -30,35 +30,42 @@ signed char *getSecureInputSignedChar(char *prompt, int bufferSize);
 /**
  * @brief Prints text in specified color
  * 
- * @param text {char *} : text to print
- * @param color {int} : color value
+ * @param text {const char *} : text to print
+ * @param color {const char *} : color value
  */
-void printInColor(const char *text, int color);
+void printInColor(const char *text, const char *color);
+
+/**
+ * @brief Prints text in white
+ * 
+ * @param text {const char *} : text to print
+ */
+void printWhite(const char *text);
 
 /**
  * @brief Prints text in red
  * 
- * @param text {char *} : text to print
+ * @param text {const char *} : text to print
  */
 void printRed(const char *text);
 
 /**
  * @brief Prints text in green
  * 
- * @param text {char *} : text to print
+ * @param text {const char *} : text to print
  */
 void printGreen(const char *text);
 
 /**
  * @brief Prints text in yellow
  * 
- * @param text {char *} : text to print
+ * @param text {const char *} : text to print
  */
 void printYellow(const char *test);
 
 /**
  * @brief Prints text in blue
  * 
- * @param text {char *} : text to print
+ * @param text {const char *} : text to print
  */
 void printBlue(const char *text);
