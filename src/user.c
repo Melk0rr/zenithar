@@ -60,3 +60,11 @@ int sumUserExpenses(user *usr)
   usr->expenseSum = expSum;
   return usr->expenseSum;
 }
+
+// Resets given user expenses : see user.h
+void resetUserExpenses(user *usr)
+{
+  usr->expenseList = NULL;
+  usr->expenseCount = 0;
+  usr->expenseSum = 0;
+}

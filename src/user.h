@@ -7,7 +7,7 @@
 typedef struct user
 {
   // Name of the user
-  signed char userName[256];
+  signed char userName[25];
   
   // List of the user expenses
   expense *expenseList;
@@ -42,3 +42,10 @@ void addExpense(user *usr, expense exp);
  * @return int : sum of the expenses
  */
 int sumUserExpenses(user *usr);
+
+/**
+ * @brief Resets expenses for the given user
+ * 
+ * @param usr {user} : the user whom expenses will be reset
+ */
+void resetUserExpenses(user *usr);
