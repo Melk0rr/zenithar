@@ -6,7 +6,7 @@
  */
 typedef struct group
 {
-  signed char groupName[256];
+  signed char groupName[25];
   user *members;
   int memberCount;
 } group;
@@ -37,3 +37,25 @@ void initGroupMembers(group *grp, user *members, int numberOfMembers);
  * @param newMember {user} : user to add
  */
 void addGroupMember(group *grp, user *newMember);
+
+/**
+ * @brief Sums the group expenses
+ * 
+ * @param grp {group} : target group
+ * @return int : sum of the group expenses
+ */
+float sumGroupExpenses(group *grp);
+
+/**
+ * @brief Prints the balance for each group member
+ * 
+ * @param grp {group} : target group
+ */
+void getGroupBalance(group *grp);
+
+/**
+ * @brief Resets expenses of group members
+ * 
+ * @param grp {group} : target group
+ */
+void resetGroupExpenses(group *grp);

@@ -1,9 +1,13 @@
 #include "group.h"
+#include "zenithar.h"
 
+#include <json-c/json_object.h>
+#include <json-c/json_types.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+// Creates a new group : see group.h
 group *createGroup(const signed char *grpName)
 {
   group *newGroup = (group *)malloc(sizeof(group));
@@ -23,6 +27,7 @@ group *createGroup(const signed char *grpName)
   return newGroup;
 }
 
+// Initializes group members : see group.h
 void initGroupMembers(group *grp, user *members, int numberOfMembers)
 {
   // Allocating memory
@@ -41,6 +46,7 @@ void initGroupMembers(group *grp, user *members, int numberOfMembers)
   }
 }
 
+// Adds a new group into the given group : see group.h
 void addGroupMember(group *grp, user *newMember)
 {
   user *newMemberList = (user *)realloc(grp->members, (grp->memberCount + 1) * sizeof(user));
@@ -58,4 +64,53 @@ void addGroupMember(group *grp, user *newMember)
 
   // Updating the member count
   grp->memberCount++;
+}
+
+// Sums the groups expenses : see group.h
+float sumGroupExpenses(group *grp)
+{
+  int grpExpSum = 0;
+
+  for (int i = 0; i < grp->memberCount; i++) {
+    grpExpSum += grp->members[i].expenseSum;
+  }
+
+  return grpExpSum;
+}
+
+// Returns the share value based on current group expenses : see group.h
+float getShare(group *grp) {
+  float sumOfGrpExpenses = sumGroupExpenses(grp);
+  return sumOfGrpExpenses / grp->memberCount;
+}
+
+// Print group balance : see group.h
+void getGroupBalance(group *grp)
+{
+  float share = getShare(grp);
+
+  for (int i = 0; i < grp->memberCount; i++) {
+    user *m = &grp->members[i];
+    float memberDue = m->expenseSum - share;
+  
+    char buffer[50];
+    if (memberDue >= 0)
+    {
+		  sprintf(buffer, "%s %f", (const char *)m->userName, memberDue);
+      printGreen(buffer);
+
+    } else {
+      sprintf(buffer, "%f %s", memberDue, m->userName);
+      printRed(buffer);
+    }
+  }
+}
+
+// Resets group expenses
+void resetGroupExpenses(group *grp)
+{
+  for (int i = 0; i; i++) {
+    user *m = &grp->members[i];
+    resetUserExpenses(m);
+  }  
 }
