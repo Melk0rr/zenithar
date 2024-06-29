@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// Generic part to get user input : see zenithar.h
 void getSecureInput(char *prompt, char *buffer, int bufferSize)
 {
   printf("%s", prompt);
@@ -26,6 +27,7 @@ void getSecureInput(char *prompt, char *buffer, int bufferSize)
   }
 }
 
+// Ask user input for an integer : see zenithar.h
 int getSecureInputInt(char *prompt, int bufferSize)
 {
   char buffer[bufferSize];
@@ -46,6 +48,7 @@ int getSecureInputInt(char *prompt, int bufferSize)
   }
 }
 
+// Ask user input for a signed char : see zenithar.h
 signed char *getSecureInputSignedChar(char *prompt, int bufferSize)
 {
   char buffer[bufferSize];
@@ -65,4 +68,37 @@ signed char *getSecureInputSignedChar(char *prompt, int bufferSize)
       printf("Input is too long. Please provide a shorter string\n");
     }
   }
+}
+
+// Prints text in a certain color : see zenithar.h
+void printInColor(const char *text, int color)
+{
+  if (30 <= color && color <= 37)
+  {
+    printf("\x1B[%dm%s\x1B[0m", color, text);
+  }
+}
+
+// Prints text in red : see zenithar.h
+void printRed(const char *text)
+{
+  printInColor(text, 31);
+}
+
+// Prints text in green : see zenithar.h
+void printGreen(const char *text)
+{
+  printInColor(text, 32);
+}
+
+// Prints text in yellow : see zenithar.h
+void printYellow(const char *text)
+{
+  printInColor(text, 33);
+}
+
+// Prints text in blue : see zenithar.h
+void printBlue(const char *text)
+{
+  printInColor(text, 34);
 }
