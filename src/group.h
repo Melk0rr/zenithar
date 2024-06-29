@@ -7,7 +7,7 @@
 typedef struct group
 {
   signed char groupName[25];
-  user *members;
+  user **members;
   int memberCount;
 } group;
 
@@ -39,6 +39,14 @@ void initGroupMembers(group *grp, user *members, int numberOfMembers);
 void addGroupMember(group *grp, user *newMember);
 
 /**
+ * @brief Creates a new user with given username and adds it into the group's member list
+ * 
+ * @param grp {group} : group in which the new user will be added
+ * @param userName {const signed char *} : username for the new user
+ */
+void addNewGroupMember(group *grp, const signed char *userName);
+
+/**
  * @brief Sums the group expenses
  * 
  * @param grp {group} : target group
@@ -59,3 +67,12 @@ void getGroupBalance(group *grp);
  * @param grp {group} : target group
  */
 void resetGroupExpenses(group *grp);
+
+/**
+ * @brief Retreives a group member by name
+ * 
+ * @param grp {group} : the group the user is member of
+ * @param userName {const signed char *} : user name
+ * @return user* : the member or NULL
+ */
+user *getMemberByName(group *grp, const signed char *userName);

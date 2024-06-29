@@ -5,7 +5,7 @@
  */
 typedef struct expense
 {
-  signed char expenseName[256];
+  signed char expenseName[20];
   float expenseCost;
 } expense;
 
