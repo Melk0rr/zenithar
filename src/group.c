@@ -124,6 +124,18 @@ int removeGroupMember(group *grp, user *member)
   return 0;
 }
 
+// Clears group members : see group.h
+void clearGroupMembers(group *grp)
+{
+  for (int i = 0; i < grp->memberCount; i++)
+  {
+    grp->members[i] = NULL;
+  }
+  
+  free(grp->members);
+  grp->memberCount = 0;
+}
+
 // Prints the group member name : see group.h
 void printMemberNames(group *grp)
 {

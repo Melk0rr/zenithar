@@ -56,6 +56,13 @@ void addNewGroupMember(group *grp, const signed char *userName);
 int removeGroupMember(group *grp, user * member);
 
 /**
+ * @brief Clears group members
+ * 
+ * @param grp {group} : the group the members will be cleared
+ */
+void clearGroupMembers(group *grp);
+
+/**
  * @brief Prints group member name
  * 
  * @param grp {group} : group to print member of
