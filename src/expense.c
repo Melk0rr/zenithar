@@ -1,7 +1,11 @@
 #include "expense.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+// #########################################################
+// Expense creation / initialization
 
 expense *createExpense(const signed char *expName, float cost)
 {
