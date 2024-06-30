@@ -1,8 +1,6 @@
 #include "group.h"
 #include "zenithar.h"
 
-#include <json-c/json_object.h>
-#include <json-c/json_types.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -88,6 +86,36 @@ void addNewGroupMember(group *grp, const signed char *userName)
 
   // Updating the member count
   grp->memberCount++;
+}
+
+// Removes the given user from members of the provided group
+int removeGroupMember(group *grp, user * member)
+{
+  int i;
+  
+  // Find out member index
+  for (i = 0; i < grp->memberCount; i++) {
+    if (grp->members[i] == member)
+    {
+      break;
+    }
+  }
+  
+  if (i >= grp->memberCount)
+  {
+    char buffer[60];
+    sprintf(buffer, "Error: user %s is not a member of group %s", member->userName, grp->groupName);
+    printRed(buffer);
+    return -1;
+  }
+
+  // Remove the member
+  for (int j = i; j < --grp->memberCount; j++) {
+    grp->members[j] = grp->members[j + 1];
+  }
+  
+  free(grp->members[grp->memberCount]);
+  return 0;
 }
 
 // #########################################################
