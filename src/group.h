@@ -47,6 +47,22 @@ void addGroupMember(group *grp, user *newMember);
 void addNewGroupMember(group *grp, const signed char *userName);
 
 /**
+ * @brief Removes the given user from members of the provided group
+ * 
+ * @param grp {group} : group from which the member will be removed
+ * @param member {usr} : member to remove
+ * @return int : -1 = fail | 0 = success
+ */
+int removeGroupMember(group *grp, user * member);
+
+/**
+ * @brief Prints group member name
+ * 
+ * @param grp {group} : group to print member of
+ */
+void printMemberNames(group *grp);
+
+/**
  * @brief Sums the group expenses
  * 
  * @param grp {group} : target group

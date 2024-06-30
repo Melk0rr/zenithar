@@ -88,19 +88,20 @@ void addNewGroupMember(group *grp, const signed char *userName)
   grp->memberCount++;
 }
 
-// Removes the given user from members of the provided group
-int removeGroupMember(group *grp, user * member)
+// Removes the given user from members of the provided group : see group.h
+int removeGroupMember(group *grp, user *member)
 {
   int i;
   
   // Find out member index
-  for (i = 0; i < grp->memberCount; i++) {
+  for (i = 0; i < grp->memberCount; i++)
+  {
     if (grp->members[i] == member)
     {
       break;
     }
   }
-  
+
   if (i >= grp->memberCount)
   {
     char buffer[60];
@@ -110,12 +111,27 @@ int removeGroupMember(group *grp, user * member)
   }
 
   // Remove the member
-  for (int j = i; j < --grp->memberCount; j++) {
+  printf("Removing %s from %s\n", member->userName, grp->groupName);
+  --grp->memberCount;
+  for (int j = i; j < grp->memberCount; j++)
+  {
     grp->members[j] = grp->members[j + 1];
   }
   
+  grp->members[grp->memberCount] = NULL;
   free(grp->members[grp->memberCount]);
+  
   return 0;
+}
+
+// Prints the group member name : see group.h
+void printMemberNames(group *grp)
+{
+  printf("Members of %s are:\n", grp->groupName);
+  for (int i = 0; i < grp->memberCount; i++)
+  {
+    printf("%s\n", grp->members[i]->userName);
+  }
 }
 
 // #########################################################
@@ -126,7 +142,8 @@ float sumGroupExpenses(group *grp)
 {
   float grpExpSum = 0;
 
-  for (int i = 0; i < grp->memberCount; i++) {
+  for (int i = 0; i < grp->memberCount; i++)
+  {
     user *m = grp->members[i];
     grpExpSum += m->expenseSum;
   }
@@ -149,7 +166,8 @@ void getGroupBalance(group *grp)
 {
   float share = getShare(grp);
 
-  for (int i = 0; i < grp->memberCount; i++) {
+  for (int i = 0; i < grp->memberCount; i++)
+  {
     user *m = grp->members[i];
     float memberDue = m->expenseSum - share;
   
@@ -169,7 +187,8 @@ void getGroupBalance(group *grp)
 // Resets group expenses
 void resetGroupExpenses(group *grp)
 {
-  for (int i = 0; i < grp->memberCount; i++) {
+  for (int i = 0; i < grp->memberCount; i++)
+  {
     resetUserExpenses(grp->members[i]);
   }  
 }
@@ -180,8 +199,10 @@ void resetGroupExpenses(group *grp)
 // Retreive a group member by name : see group.h
 user *getMemberByName(group *grp, const signed char *userName)
 {
-  for (int i = 0; i < grp->memberCount; i++) {
-    if (grp->members[i]->userName == userName) {
+  for (int i = 0; i < grp->memberCount; i++)
+  {
+    if (grp->members[i]->userName == userName)
+    {
       return grp->members[i];
     }
   }
