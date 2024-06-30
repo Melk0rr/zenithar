@@ -103,7 +103,7 @@ float sumGroupExpenses(group *grp)
     grpExpSum += m->expenseSum;
   }
 
-  printf("Sum of group expense: %f\n", grpExpSum);
+  printf("Group expenses: %f\n", grpExpSum);
   return grpExpSum;
 }
 
@@ -128,11 +128,11 @@ void getGroupBalance(group *grp)
     char buffer[50];
     if (memberDue >= 0)
     {
-		  sprintf(buffer, "%s %f", (char *)m->userName, memberDue);
+		  sprintf(buffer, "%s | +%f", (char *)m->userName, memberDue);
       printGreen(buffer);
 
     } else {
-      sprintf(buffer, "%f %s", memberDue, m->userName);
+      sprintf(buffer, "%f | %s", memberDue, m->userName);
       printRed(buffer);
     }
   }
@@ -141,7 +141,7 @@ void getGroupBalance(group *grp)
 // Resets group expenses
 void resetGroupExpenses(group *grp)
 {
-  for (int i = 0; i; i++) {
+  for (int i = 0; i < grp->memberCount; i++) {
     resetUserExpenses(grp->members[i]);
   }  
 }
