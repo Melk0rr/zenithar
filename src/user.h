@@ -1,3 +1,6 @@
+#ifndef __USER__H__
+#define __USER__H__
+
 #include "expense.h"
 
 /**
@@ -49,3 +52,5 @@ void sumUserExpenses(user *usr);
  * @param usr {user} : the user whom expenses will be reset
  */
 void resetUserExpenses(user *usr);
+
+#endif
