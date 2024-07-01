@@ -1,3 +1,6 @@
+#ifndef __GROUP__H__
+#define __GROUP__H__
+
 #include "user.h"
 
 /**
@@ -99,3 +102,5 @@ void resetGroupExpenses(group *grp);
  * @return user* : the member or NULL
  */
 user *getMemberByName(group *grp, const signed char *userName);
+
+#endif
