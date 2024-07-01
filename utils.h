@@ -1,5 +1,5 @@
-#ifndef __ZENITHAR__H__
-#define __ZENITHAR__H__
+#ifndef __UTILS__H__
+#define __UTILS__H__
 
 /**
  * @brief Ask user for input
