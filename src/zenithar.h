@@ -1,3 +1,5 @@
+#ifndef __ZENITHAR__H__
+#define __ZENITHAR__H__
 
 /**
  * @brief Ask user for input
@@ -69,3 +71,5 @@ void printYellow(const char *test);
  * @param text {const char *} : text to print
  */
 void printBlue(const char *text);
+
+#endif
