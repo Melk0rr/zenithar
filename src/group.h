@@ -9,9 +9,14 @@
  */
 typedef struct group
 {
+  // Group name
   signed char groupName[25];
+
   // TODO : linked list
+  // Member list which contains users
   user **members;
+
+  // Number of members in the group
   int memberCount;
 } group;
 
