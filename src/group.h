@@ -10,6 +10,7 @@
 typedef struct group
 {
   signed char groupName[25];
+  // TODO : linked list
   user **members;
   int memberCount;
 } group;
