@@ -11,7 +11,8 @@ typedef struct user
 {
   // Name of the user
   signed char userName[25];
-  
+
+  // TODO : linked list
   // List of the user expenses
   expense **expenseList;
   
