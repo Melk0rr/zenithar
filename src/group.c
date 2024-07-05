@@ -11,7 +11,7 @@
 // Creates a new group : see group.h
 group *createGroup(const signed char *grpName)
 {
-  group *newGroup = malloc(sizeof(group));
+  group *newGroup = malloc(sizeof(*newGroup));
   if (newGroup == NULL)
   {
     fprintf(stderr, "createGroup::Memory allocation failed !");
@@ -31,8 +31,14 @@ group *createGroup(const signed char *grpName)
 // Initializes group members : see group.h
 void initGroupMembers(group *grp, user *members, int numberOfMembers)
 {
+  if (members == NULL)
+  {
+    fprintf(stderr, "initGroupMembers::Provided members list is empty");
+    exit(1);
+  }
+
   // Allocating memory
-  grp->members = malloc(numberOfMembers * sizeof(user));
+  grp->members = malloc(numberOfMembers * sizeof(members[0]));
   if (grp->members == NULL)
   {
     fprintf(stderr, "initGroupMembers::Memory allocation failed !\n");
