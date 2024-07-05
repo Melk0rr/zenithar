@@ -11,7 +11,7 @@
 // Creates a new user : see user.h
 user *createUser(const signed char *usrName)
 {
-  user *newUser = (user *)malloc(sizeof(user));
+  user *newUser = (user *)malloc(sizeof(*newUser));
   if (newUser == NULL)
   {
     fprintf(stderr, "createUser::Memory allocation failed !");
