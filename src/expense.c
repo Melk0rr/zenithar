@@ -10,7 +10,7 @@
 expense *createExpense(const signed char *expName, float cost)
 {
   // Allocate memory
-  expense *newExpense = (expense *)malloc(sizeof(expense));
+  expense *newExpense = malloc(sizeof(*newExpense));
 
   if (newExpense == NULL)
   {
