@@ -3,6 +3,9 @@
 
 #include "user.h"
 
+// #########################################################
+// Group struct definition
+
 /**
  * @brief Group of users to share expenses
  * 
@@ -19,6 +22,9 @@ typedef struct group
   // Number of members in the group
   int memberCount;
 } group;
+
+// #########################################################
+// Prototypes
 
 /**
  * @brief Create a new Group

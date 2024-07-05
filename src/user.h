@@ -3,6 +3,9 @@
 
 #include "expense.h"
 
+// #########################################################
+// User struct definition
+
 /**
  * @brief A user that makes expenses
  * 
@@ -22,6 +25,9 @@ typedef struct user
   // Sum of the user's expenses
   float expenseSum;
 } user;
+
+// #########################################################
+// Prototypes
 
 /**
  * @brief Creates a new user

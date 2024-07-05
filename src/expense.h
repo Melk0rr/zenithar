@@ -1,6 +1,9 @@
 #ifndef __EXPENSE__H__
 #define __EXPENSE__H__
 
+// #########################################################
+// Expense struct definition
+
 /**
  * @brief An expense with a name that describes it and a cost
  * 
@@ -19,5 +22,8 @@ typedef struct expense
  * @return struct expense* 
  */
 expense *createExpense(const signed char *expName, float cost);
+
+// #########################################################
+// Prototypes
 
 #endif
