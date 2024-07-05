@@ -9,7 +9,7 @@
  * @param bufferSize {int} : size of the buffer
  * @return signed char 
  */
-signed char getSecureInput(char *prompt, char *buffer, int bufferSize);
+void getSecureInput(char *prompt, char *buffer, int bufferSize);
 
 /**
  * @brief Ask user specifically for an int
