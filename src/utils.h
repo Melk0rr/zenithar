@@ -1,6 +1,22 @@
 #ifndef __UTILS__H__
 #define __UTILS__H__
 
+// #########################################################
+// Bool type definition
+
+/**
+ * @brief Bool type struct
+ * 
+ */
+typedef enum
+{
+  false,
+  true
+} bool;
+
+// #########################################################
+// Prototypes
+
 /**
  * @brief Ask user for input
  * 
