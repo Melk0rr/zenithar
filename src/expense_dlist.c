@@ -21,7 +21,7 @@ bool isExpenseDListEmpty(ExpenseDList eli)
   return false;
 }
 
-// Function to return expense dlist length
+// Function to return expense dlist length : see expense_dlist.h
 int expenseDListLength(ExpenseDList eli)
 {
   if (isExpenseDListEmpty(eli))
