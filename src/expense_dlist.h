@@ -2,9 +2,10 @@
 #define __EXPENSE_DLIST__H__
 
 #import "expense.h"
+#import "utils.h"
 
 // #########################################################
-// Expense DList and node
+// Expense DList and node struct definition
 
 /**
  * @brief Expenses doubled chained list node
@@ -13,8 +14,8 @@
 typedef struct ExpenseDListNode
 {
   expense nodeExpense;
-  ExpenseDListNode *prev;
-  ExpenseDListNode *next;
+  struct ExpenseDListNode *prev;
+  struct ExpenseDListNode *next;
 } ExpenseDListNode;
 
 /**
@@ -24,8 +25,35 @@ typedef struct ExpenseDListNode
 typedef struct ExpenseDList
 {
   int length;
-  ExpenseDListNode *begin;
-  ExpenseDListNode *end;
-} ExpenseDList;
+  struct ExpenseDListNode *begin;
+  struct ExpenseDListNode *end;
+} *ExpenseDList;
+
+// #########################################################
+// Prototypes
+
+/**
+ * @brief Creates an empty list
+ * 
+ * @return ExpenseDList : new empty list
+ */
+ExpenseDList newExpenseDList(void);
+
+/**
+ * @brief Checks if a list is empty
+ * 
+ * @param eli {ExpenseDList} : list to check
+ * @return true : the list is empty
+ * @return false : the list is not empty
+ */
+bool isExpenseDListEmpty(ExpenseDList eli);
+
+/**
+ * @brief Returns the current length of the list
+ * 
+ * @param eli {ExpenseDList} : target list
+ * @return int : length of the targeted length
+ */
+int expenseDListLength(ExpenseDList eli);
 
 #endif
