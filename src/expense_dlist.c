@@ -54,3 +54,47 @@ expense getLastExpenseDListNode(ExpenseDList eli)
 
   return eli->end->nodeExpense;
 }
+
+ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp)
+{
+  ExpenseDListNode *expNode = malloc(sizeof(*expNode));
+
+  if (expNode == NULL)
+  {
+    fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for new ExpenseDListNode !");
+    exit(1);
+  }
+
+  expNode->nodeExpense = exp;
+  expNode->prev = NULL;
+  expNode->next = NULL;
+  
+  if (isExpenseDListEmpty(eli))
+  {
+    eli = malloc(sizeof(*eli));
+
+    if (eli == NULL)
+    {
+      fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for empty ExpenseList !");
+      exit(1);
+    }
+    
+    // If dlist is empty : new node is the first and last element
+    eli->length = 0;
+    eli->begin = expNode;
+    eli->end = expNode;
+
+  } else {
+    // If dlist is not empty : Last dlist element next pointer now points to new node
+    eli->end->next = expNode;
+
+    // New node prev pointer now points to the previous last dlist element
+    expNode->prev = eli->end;
+    
+    // And dlist end now points to the new node
+    eli->end = expNode;
+  }
+  
+  eli->length++;
+  return eli;
+}
