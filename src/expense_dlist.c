@@ -33,7 +33,7 @@ int expenseDListLength(ExpenseDList eli)
   return eli->length;
 }
 
-// Function to retreive first expense element of dlist : see expense_dlist.h
+// Function to retreive first element of expense dlist : see expense_dlist.h
 expense getFirstExpenseDListNode(ExpenseDList eli)
 {
   if (isExpenseDListEmpty(eli))
