@@ -56,4 +56,12 @@ bool isExpenseDListEmpty(ExpenseDList eli);
  */
 int expenseDListLength(ExpenseDList eli);
 
+/**
+ * @brief Get the First Expense D List Node object
+ * 
+ * @param eli {ExpenseDList} : list from which retreive first node
+ * @return expense : first expense
+ */
+expense getFirstExpenseDListNode(ExpenseDList eli);
+
 #endif
