@@ -2,6 +2,7 @@
 #include "utils.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 // Function to create an empty expense dlist : see expense_dlist.h
 ExpenseDList newExpenseDList()
@@ -30,4 +31,15 @@ int expenseDListLength(ExpenseDList eli)
   }
   
   return eli->length;
+}
+
+// Function to retreive first expense element of dlist : see expense_dlist.h
+expense getFirstExpenseDListNode(ExpenseDList eli)
+{
+  if (isExpenseDListEmpty(eli))
+  {
+    exit(1);
+  }
+
+  return eli->begin->nodeExpense;
 }
