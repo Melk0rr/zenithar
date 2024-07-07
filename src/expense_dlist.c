@@ -43,3 +43,14 @@ expense getFirstExpenseDListNode(ExpenseDList eli)
 
   return eli->begin->nodeExpense;
 }
+
+// Function to retreive the last element of expense dlist : see expense_dlist.h
+expense getLastExpenseDListNode(ExpenseDList eli)
+{
+  if (isExpenseDListEmpty(eli))
+  {
+    exit(1);
+  }
+
+  return eli->end->nodeExpense;
+}

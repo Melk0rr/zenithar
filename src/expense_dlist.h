@@ -64,4 +64,12 @@ int expenseDListLength(ExpenseDList eli);
  */
 expense getFirstExpenseDListNode(ExpenseDList eli);
 
+/**
+ * @brief Get the Last Expense D List Node object
+ * 
+ * @param eli {ExpenseDList} : list from which retreive first node
+ * @return expense : last expense
+ */
+expense getLastExpenseDListNode(ExpenseDList eli);
+
 #endif
