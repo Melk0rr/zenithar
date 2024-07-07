@@ -58,7 +58,7 @@ expense getLastExpenseDListNode(ExpenseDList eli)
 ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp)
 {
   ExpenseDListNode *expNode = malloc(sizeof(*expNode));
-
+  
   if (expNode == NULL)
   {
     fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for new ExpenseDListNode !");
