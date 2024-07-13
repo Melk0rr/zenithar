@@ -81,5 +81,14 @@ expense getLastExpenseDListNode(ExpenseDList eli);
  */
 ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp);
 
+/**
+ * @brief Push an expense at the beginning of the given expense dlist
+ * 
+ * @param eli {ExpenseDList} : expense dlist in which push the expense
+ * @param exp {expense} : expense to push
+ * @return ExpenseDList 
+ */
+ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp);
+
 
 #endif
