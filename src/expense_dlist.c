@@ -146,6 +146,7 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp)
   return eli;
 }
 
+// Function to pop an expsense node from given list : see expense_dlist.h
 ExpenseDList popBackExpenseDList(ExpenseDList eli)
 {
   if (isExpenseDListEmpty(eli))
