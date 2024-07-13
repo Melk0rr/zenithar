@@ -98,4 +98,12 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp);
  */
 ExpenseDList popBackExpenseDList(ExpenseDList eli);
 
+/**
+ * @brief Pops an expense node from the beginning of the given expense dlist
+ * 
+ * @param eli {ExpenseDList} : expense dlist from which a node will be poped
+ * @return ExpenseDList 
+ */
+ExpenseDList popFrontExpenseDList(ExpenseDList eli);
+
 #endif
