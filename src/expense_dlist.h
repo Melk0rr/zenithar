@@ -73,7 +73,7 @@ expense getFirstExpenseDListNode(ExpenseDList eli);
 expense getLastExpenseDListNode(ExpenseDList eli);
 
 /**
- * @brief Push an expense at the end of the given expense dlist
+ * @brief Pushes an expense node at the end of the given expense dlist
  * 
  * @param eli {ExpenseDList} : expense dlist in which push the expense
  * @param exp {expense} : expense to push
@@ -82,7 +82,7 @@ expense getLastExpenseDListNode(ExpenseDList eli);
 ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp);
 
 /**
- * @brief Push an expense at the beginning of the given expense dlist
+ * @brief Pushes an expense node at the beginning of the given expense dlist
  * 
  * @param eli {ExpenseDList} : expense dlist in which push the expense
  * @param exp {expense} : expense to push
@@ -90,5 +90,12 @@ ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp);
  */
 ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp);
 
+/**
+ * @brief Pops an expense node from the end of the given expense dlist
+ * 
+ * @param eli {ExpenseDList} : expense dlist from which a node will be poped
+ * @return ExpenseDList 
+ */
+ExpenseDList popBackExpenseDList(ExpenseDList eli);
 
 #endif
