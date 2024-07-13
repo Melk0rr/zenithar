@@ -55,6 +55,7 @@ expense getLastExpenseDListNode(ExpenseDList eli)
   return eli->end->nodeExpense;
 }
 
+// Function to push a new expense at the end of an expense dlist : see expense_dlist.h
 ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp)
 {
   ExpenseDListNode *expNode = malloc(sizeof(*expNode));
