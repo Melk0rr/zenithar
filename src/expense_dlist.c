@@ -1,6 +1,7 @@
 #include "expense_dlist.h"
 #include "utils.h"
 
+#include <cstddef>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -143,4 +144,42 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp)
   
   eli->length++;
   return eli;
+}
+
+ExpenseDList popBackExpenseDList(ExpenseDList eli)
+{
+  if (isExpenseDListEmpty(eli))
+  {
+    printf("popBackExpenseDList::List is empty. Nothing to pop.\n");
+    return newExpenseDList();
+  }
+  
+  // Check if the list contains only one element
+  if (eli->begin == eli->end)
+  {
+    free(eli);
+    eli = NULL;
+
+    return newExpenseDList();
+  }
+  // Saves the las element
+  ExpenseDListNode *tmp = eli->end;
+
+  // Last node is now the second to last
+  eli->end = eli->end->prev;
+
+  // The new last node next pointer is now NULL as it is the last element
+  eli->end->next = NULL;
+
+  // Deleting removed node links to prev and next
+  tmp->next = NULL;
+  tmp->prev = NULL;
+
+  free(tmp);
+  tmp = NULL;
+
+  eli->length--;
+
+  return eli;
+
 }
