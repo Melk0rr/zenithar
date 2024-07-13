@@ -146,7 +146,7 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp)
   return eli;
 }
 
-// Function to pop an expsense node from given list : see expense_dlist.h
+// Function to pop an expense node from given list end : see expense_dlist.h
 ExpenseDList popBackExpenseDList(ExpenseDList eli)
 {
   if (isExpenseDListEmpty(eli))
@@ -163,7 +163,7 @@ ExpenseDList popBackExpenseDList(ExpenseDList eli)
 
     return newExpenseDList();
   }
-  // Saves the las element
+  // Saves the last element
   ExpenseDListNode *tmp = eli->end;
 
   // Last node is now the second to last
@@ -171,6 +171,44 @@ ExpenseDList popBackExpenseDList(ExpenseDList eli)
 
   // The new last node next pointer is now NULL as it is the last element
   eli->end->next = NULL;
+
+  // Deleting removed node links to prev and next
+  tmp->next = NULL;
+  tmp->prev = NULL;
+
+  free(tmp);
+  tmp = NULL;
+
+  eli->length--;
+
+  return eli;
+}
+
+// Function to pop an expense node from given list beginning : see expense_dlist.h
+ExpenseDList popFrontExpenseDList(ExpenseDList eli)
+{
+  if (isExpenseDListEmpty(eli))
+  {
+    printf("popBackExpenseDList::List is empty. Nothing to pop.\n");
+    return newExpenseDList();
+  }
+  
+  // Check if the list contains only one element
+  if (eli->begin == eli->end)
+  {
+    free(eli);
+    eli = NULL;
+
+    return newExpenseDList();
+  }
+  // Saves the first element
+  ExpenseDListNode *tmp = eli->begin;
+
+  // First node is now the second to first
+  eli->begin = eli->begin->next;
+
+  // The new first node prev pointer is now NULL as it is the first element
+  eli->begin->prev = NULL;
 
   // Deleting removed node links to prev and next
   tmp->next = NULL;
