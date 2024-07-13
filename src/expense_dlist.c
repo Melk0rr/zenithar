@@ -99,3 +99,48 @@ ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp)
   eli->length++;
   return eli;
 }
+
+// Function to push a new expense at the beginning of an expense dlist : see expense_dlist.h
+ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp)
+{
+  ExpenseDListNode *expNode = malloc(sizeof(*expNode));
+  
+  if (expNode == NULL)
+  {
+    fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for new ExpenseDListNode !");
+    exit(1);
+  }
+
+  expNode->nodeExpense = exp;
+  expNode->prev = NULL;
+  expNode->next = NULL;
+  
+  if (isExpenseDListEmpty(eli))
+  {
+    eli = malloc(sizeof(*eli));
+
+    if (eli == NULL)
+    {
+      fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for empty ExpenseList !");
+      exit(1);
+    }
+    
+    // If dlist is empty : new node is the first and last element
+    eli->length = 0;
+    eli->begin = expNode;
+    eli->end = expNode;
+
+  } else {
+    // If dlist is not empty : Last dlist element next pointer now points to new node
+    eli->begin->prev = expNode;
+
+    // New node prev pointer now points to the previous last dlist element
+    expNode->next = eli->begin;
+    
+    // And dlist end now points to the new node
+    eli->begin = expNode;
+  }
+  
+  eli->length++;
+  return eli;
+}
