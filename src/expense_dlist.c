@@ -181,5 +181,4 @@ ExpenseDList popBackExpenseDList(ExpenseDList eli)
   eli->length--;
 
   return eli;
-
 }
