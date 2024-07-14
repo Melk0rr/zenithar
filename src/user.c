@@ -58,6 +58,6 @@ void sumUserExpenses(user *usr)
 // Resets given user expenses : see user.h
 void resetUserExpenses(user *usr)
 {
-  usr->expenseList = newExpenseDList();
+  usr->expenseList = clearExpenseDlist(usr->expenseList);
   usr->expenseSum = 0;
 }
