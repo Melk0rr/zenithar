@@ -237,3 +237,14 @@ void printExpenseDList(ExpenseDList eli)
     temp = temp->next;  
   }
 }
+
+// Function to clear an expense dlist content
+ExpenseDList clearExpenseDlist(ExpenseDList eli)
+{
+  while(!isExpenseDListEmpty(eli))
+  {
+    eli = popBackExpenseDList(eli);
+  }
+  
+  return newExpenseDList();
+}
