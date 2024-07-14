@@ -113,4 +113,12 @@ ExpenseDList popFrontExpenseDList(ExpenseDList eli);
  */
 void printExpenseDList(ExpenseDList eli);
 
+/**
+ * @brief Clears an expense dlist content
+ * 
+ * @param eli {ExpenseDlist} : expense dlist to clear
+ * @return ExpenseDList 
+ */
+ExpenseDList clearExpenseDlist(ExpenseDList eli);
+
 #endif
