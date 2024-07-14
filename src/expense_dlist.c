@@ -1,7 +1,6 @@
 #include "expense_dlist.h"
 #include "utils.h"
 
-#include <cstddef>
 #include <stdio.h>
 #include <stdlib.h>
 

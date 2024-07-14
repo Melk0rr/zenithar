@@ -2,6 +2,7 @@
 #define __USER__H__
 
 #include "expense.h"
+#include "expense_dlist.h"
 
 // #########################################################
 // User struct definition
@@ -15,12 +16,8 @@ typedef struct user
   // Name of the user
   signed char userName[25];
 
-  // TODO : linked list
   // List of the user expenses
-  expense **expenseList;
-  
-  // Number of expenses for memory allocation
-  int expenseCount;
+  ExpenseDList expenseList;
   
   // Sum of the user's expenses
   float expenseSum;
