@@ -221,3 +221,20 @@ ExpenseDList popFrontExpenseDList(ExpenseDList eli)
 
   return eli;
 }
+
+// Function to print the content of an expense dlist
+void printExpenseDList(ExpenseDList eli)
+{
+  if (isExpenseDListEmpty(eli))
+  {
+    printf("printExpenseDlist::List is empty, nothing to print");
+    return;
+  }
+  
+  ExpenseDListNode *temp = eli->begin;
+  
+  while (temp->next != NULL) {
+    printf("%s : %f\n", temp->nodeExpense.expenseName, temp->nodeExpense.expenseCost);
+    temp = temp->next;  
+  }
+}
