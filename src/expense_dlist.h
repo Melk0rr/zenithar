@@ -106,4 +106,11 @@ ExpenseDList popBackExpenseDList(ExpenseDList eli);
  */
 ExpenseDList popFrontExpenseDList(ExpenseDList eli);
 
+/**
+ * @brief Prints the content of an expense dlist
+ * 
+ * @param eli {ExpenseDlist} : list to print
+ */
+void printExpenseDList(ExpenseDList eli);
+
 #endif
