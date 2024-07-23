@@ -249,3 +249,19 @@ ExpenseDList clearExpenseDlist(ExpenseDList eli)
   return newExpenseDList();
 }
 
+// Function to sum all expenses : see expense_dlist.h
+float sumDListExpenses(ExpenseDList eli)
+{
+  float expenseSum = 0;
+  if !(isExpenseDListEmpty(eli))
+  {
+    ExpenseDListNode *temp = eli->begin;
+  
+    while (temp->next != NULL) {
+      expenseSum += temp->nodeExpense.expenseCost;
+      temp = temp->next;
+    }
+  }
+  
+  return expenseSum;
+}
