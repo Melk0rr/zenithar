@@ -221,7 +221,7 @@ ExpenseDList popFrontExpenseDList(ExpenseDList eli)
   return eli;
 }
 
-// Function to print the content of an expense dlist
+// Function to print the content of an expense dlist : see expense_dlist.h
 void printExpenseDList(ExpenseDList eli)
 {
   if (isExpenseDListEmpty(eli))
@@ -238,7 +238,7 @@ void printExpenseDList(ExpenseDList eli)
   }
 }
 
-// Function to clear an expense dlist content
+// Function to clear an expense dlist content : see expense_dlist.h
 ExpenseDList clearExpenseDlist(ExpenseDList eli)
 {
   while(!isExpenseDListEmpty(eli))
@@ -248,3 +248,4 @@ ExpenseDList clearExpenseDlist(ExpenseDList eli)
   
   return newExpenseDList();
 }
+
