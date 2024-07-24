@@ -33,9 +33,9 @@ typedef struct ExpenseDList
 // Prototypes
 
 /**
- * @brief Creates an empty list
+ * @brief Creates an empty expense dlist
  * 
- * @return ExpenseDList : new empty list
+ * @return ExpenseDList : new empty expense dlist
  */
 ExpenseDList newExpenseDList(void);
 
