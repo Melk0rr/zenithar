@@ -32,4 +32,11 @@ typedef struct UserDList
 // #########################################################
 // Prototypes
 
+/**
+ * @brief Creates an empty user dlist
+ * 
+ * @return UserDList : new empty list
+ */
+UserDList newUserDList(void);
+
 #endif
