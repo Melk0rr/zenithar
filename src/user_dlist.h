@@ -39,4 +39,13 @@ typedef struct UserDList
  */
 UserDList newUserDList(void);
 
+/**
+ * @brief Checks if a user dlist is empty
+ * 
+ * @param eli {UserDList} : dlist to check
+ * @return true : the dlist is empty
+ * @return false : the dlist is not empty
+ */
+bool isUserDListEmpty(UserDList uli);
+
 #endif
