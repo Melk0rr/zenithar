@@ -253,7 +253,7 @@ ExpenseDList clearExpenseDlist(ExpenseDList eli)
 float sumDListExpenses(ExpenseDList eli)
 {
   float expenseSum = 0;
-  if !(isExpenseDListEmpty(eli))
+  if (!isExpenseDListEmpty(eli))
   {
     ExpenseDListNode *temp = eli->begin;
   
