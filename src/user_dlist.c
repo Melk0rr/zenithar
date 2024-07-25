@@ -20,3 +20,14 @@ bool isUserDListEmpty(UserDList uli)
   
   return false;
 }
+
+// Function to return user dlist length : see user_dlist.h
+int userDListLength(UserDList uli)
+{
+  if (isUserDListEmpty(uli))
+  {
+    return 0;
+  }
+  
+  return uli->length;
+}
