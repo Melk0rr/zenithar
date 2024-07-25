@@ -49,7 +49,15 @@ UserDList newUserDList(void);
 bool isUserDListEmpty(UserDList uli);
 
 /**
- * @brief Get the First User D List Node object
+ * @brief Returns the current length of the user dlist
+ * 
+ * @param uli {UserDList} : targeted dlist
+ * @return int : length of the targeted length
+ */
+int userDListLength(UserDList uli);
+
+/**
+ * @brief Get the first user dlist node object
  * 
  * @param uli {UserDList} : list from which retreive first node
  * @return user : first user
