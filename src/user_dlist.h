@@ -54,7 +54,7 @@ bool isUserDListEmpty(UserDList uli);
  * @param uli {UserDList} : list from which retreive first node
  * @return user : first user
  */
-user getFirstUserDListNode(UserDList eli);
+user getFirstUserDListNode(UserDList uli);
 
 
 
