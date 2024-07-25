@@ -40,7 +40,7 @@ typedef struct ExpenseDList
 ExpenseDList newExpenseDList(void);
 
 /**
- * @brief Checks if a list is empty
+ * @brief Checks if an expense dlist is empty
  * 
  * @param eli {ExpenseDList} : list to check
  * @return true : the list is empty
@@ -49,9 +49,9 @@ ExpenseDList newExpenseDList(void);
 bool isExpenseDListEmpty(ExpenseDList eli);
 
 /**
- * @brief Returns the current length of the list
+ * @brief Returns the current length of the expense dlist
  * 
- * @param eli {ExpenseDList} : target list
+ * @param eli {ExpenseDList} : targeted dlist
  * @return int : length of the targeted length
  */
 int expenseDListLength(ExpenseDList eli);
