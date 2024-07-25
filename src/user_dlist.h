@@ -42,10 +42,20 @@ UserDList newUserDList(void);
 /**
  * @brief Checks if a user dlist is empty
  * 
- * @param eli {UserDList} : dlist to check
+ * @param uli {UserDList} : dlist to check
  * @return true : the dlist is empty
  * @return false : the dlist is not empty
  */
 bool isUserDListEmpty(UserDList uli);
+
+/**
+ * @brief Get the First User D List Node object
+ * 
+ * @param uli {UserDList} : list from which retreive first node
+ * @return user : first user
+ */
+user getFirstUserDListNode(UserDList eli);
+
+
 
 #endif
