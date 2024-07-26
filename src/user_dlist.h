@@ -64,6 +64,12 @@ int userDListLength(UserDList uli);
  */
 user getFirstUserDListNode(UserDList uli);
 
-
+/**
+ * @brief Get the last user dist node object
+ * 
+ * @param eli {UserDList} : list from which retreive first node
+ * @return user : last user
+ */
+user getLastUserDListNode(UserDList uli);
 
 #endif
