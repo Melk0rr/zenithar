@@ -31,3 +31,14 @@ int userDListLength(UserDList uli)
   
   return uli->length;
 }
+
+// Function to retreive first element of user dlist : see user_dlist.h
+user getFirstUserDListNode(UserDList uli)
+{
+  if (isUserDListEmpty(uli))
+  {
+    exit(1);
+  }
+
+  return uli->begin->nodeUser;
+}
