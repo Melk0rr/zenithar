@@ -98,3 +98,48 @@ UserDList pushBackUserDList(UserDList uli, user usr)
   uli->length++;
   return uli;
 }
+
+// Function to push a new user at the beginning of an user dlist : see user_dlist.h
+UserDList pushFrontUserDList(UserDList uli, user usr)
+{
+  UserDListNode *usrNode = malloc(sizeof(*usrNode));
+  
+  if (usrNode == NULL)
+  {
+    fprintf(stderr, "pushFrontUserDList::Memory allocation failed for new UserDListNode !");
+    exit(1);
+  }
+
+  usrNode->nodeUser = usr;
+  usrNode->prev = NULL;
+  usrNode->next = NULL;
+  
+  if (isUserDListEmpty(uli))
+  {
+    uli = malloc(sizeof(*uli));
+
+    if (uli == NULL)
+    {
+      fprintf(stderr, "pushFrontUserDList::Memory allocation failed for empty UserList !");
+      exit(1);
+    }
+    
+    // If dlist is empty : new node is the first and last element
+    uli->length = 0;
+    uli->begin = usrNode;
+    uli->end = usrNode;
+
+  } else {
+    // If dlist is not empty : Last dlist element next pointer now points to new node
+    uli->begin->prev = usrNode;
+
+    // New node prev pointer now points to the previous last dlist element
+    usrNode->next = uli->begin;
+    
+    // And dlist end now points to the new node
+    uli->begin = usrNode;
+  }
+  
+  uli->length++;
+  return uli;
+}
