@@ -107,7 +107,7 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp)
   
   if (expNode == NULL)
   {
-    fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for new ExpenseDListNode !");
+    fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for new ExpenseDListNode !");
     exit(1);
   }
 
@@ -121,7 +121,7 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp)
 
     if (eli == NULL)
     {
-      fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for empty ExpenseList !");
+      fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for empty ExpenseList !");
       exit(1);
     }
     
