@@ -72,4 +72,13 @@ user getFirstUserDListNode(UserDList uli);
  */
 user getLastUserDListNode(UserDList uli);
 
+/**
+ * @brief Pushes a user node at the end of the given user dlist
+ * 
+ * @param uli {UserDList} : user dlist in which push the User
+ * @param usr {user} : user to push
+ * @return UserDList 
+ */
+UserDList pushBackUserDList(UserDList uli, user usr);
+
 #endif
