@@ -42,3 +42,14 @@ user getFirstUserDListNode(UserDList uli)
 
   return uli->begin->nodeUser;
 }
+
+// Function to retreive the last element of user dlist : see user_dlist.h
+user getLastUserDListNode(UserDList uli)
+{
+  if (isUserDListEmpty(uli))
+  {
+    exit(1);
+  }
+
+  return uli->end->nodeUser;
+}
