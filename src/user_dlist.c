@@ -143,3 +143,41 @@ UserDList pushFrontUserDList(UserDList uli, user usr)
   uli->length++;
   return uli;
 }
+
+// Function to pop an user node from given list end : see user_dlist.h
+UserDList popBackUserDList(UserDList uli)
+{
+  if (isUserDListEmpty(uli))
+  {
+    printf("popBackUserDList::List is empty. Nothing to pop.\n");
+    return newUserDList();
+  }
+  
+  // Check if the list contains only one element
+  if (uli->begin == uli->end)
+  {
+    free(uli);
+    uli = NULL;
+
+    return newUserDList();
+  }
+  // Saves the last element
+  UserDListNode *tmp = uli->end;
+
+  // Last node is now the second to last
+  uli->end = uli->end->prev;
+
+  // The new last node next pointer is now NULL as it is the last element
+  uli->end->next = NULL;
+
+  // Deleting removed node links to prev and next
+  tmp->next = NULL;
+  tmp->prev = NULL;
+
+  free(tmp);
+  tmp = NULL;
+
+  uli->length--;
+
+  return uli;
+}
