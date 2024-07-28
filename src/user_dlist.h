@@ -90,4 +90,12 @@ UserDList pushBackUserDList(UserDList uli, user usr);
  */
 UserDList pushFrontUserDList(UserDList uli, user usr);
 
+/**
+ * @brief Pops an user node from the end of the given user dlist
+ * 
+ * @param uli {UserDList} : user dlist from which a node will be poped
+ * @return UserDList 
+ */
+UserDList popBackUserDList(UserDList uli);
+
 #endif
