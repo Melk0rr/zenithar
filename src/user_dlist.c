@@ -181,3 +181,41 @@ UserDList popBackUserDList(UserDList uli)
 
   return uli;
 }
+
+// Function to pop an user node from given list beginning : see user_dlist.h
+UserDList popFrontUserDList(UserDList uli)
+{
+  if (isUserDListEmpty(uli))
+  {
+    printf("popBackUserDList::List is empty. Nothing to pop.\n");
+    return newUserDList();
+  }
+  
+  // Check if the list contains only one element
+  if (uli->begin == uli->end)
+  {
+    free(uli);
+    uli = NULL;
+
+    return newUserDList();
+  }
+  // Saves the first element
+  UserDListNode *tmp = uli->begin;
+
+  // First node is now the second to first
+  uli->begin = uli->begin->next;
+
+  // The new first node prev pointer is now NULL as it is the first element
+  uli->begin->prev = NULL;
+
+  // Deleting removed node links to prev and next
+  tmp->next = NULL;
+  tmp->prev = NULL;
+
+  free(tmp);
+  tmp = NULL;
+
+  uli->length--;
+
+  return uli;
+}
