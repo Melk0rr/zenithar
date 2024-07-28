@@ -106,4 +106,11 @@ UserDList popBackUserDList(UserDList uli);
  */
 UserDList popFrontUserDList(UserDList uli);
 
+/**
+ * @brief Prints the content of an user dlist
+ * 
+ * @param eli {UserDlist} : list to print
+ */
+void printUserDList(UserDList uli);
+
 #endif
