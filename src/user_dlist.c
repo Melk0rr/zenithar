@@ -219,3 +219,20 @@ UserDList popFrontUserDList(UserDList uli)
 
   return uli;
 }
+
+// Function to print the content of an user dlist : see user_dlist.h
+void printUserDList(UserDList uli)
+{
+  if (isUserDListEmpty(uli))
+  {
+    printf("printUserDlist::List is empty, nothing to print");
+    return;
+  }
+  
+  UserDListNode *temp = uli->begin;
+  
+  while (temp->next != NULL) {
+    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.expenseSum);
+    temp = temp->next;  
+  }
+}
