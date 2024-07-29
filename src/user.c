@@ -44,7 +44,7 @@ void addNewUserExpense(user *usr, const signed char *expName, float expCost)
 // Sums the given user expenses : see user.h
 void sumUserExpenses(user *usr)
 {
-  return sumDListExpenses(usr->expenseList);
+  usr->expenseSum = sumDListExpenses(usr->expenseList);
 }
 
 // Resets given user expenses : see user.h
