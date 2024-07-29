@@ -107,6 +107,15 @@ ExpenseDList popBackExpenseDList(ExpenseDList eli);
 ExpenseDList popFrontExpenseDList(ExpenseDList eli);
 
 /**
+ * @brief Removes a specific expense from an expense dlist
+ * 
+ * @param eli {ExpenseDlist} : expense dlist from which the expense will be removed
+ * @param exp {Expense} : the expense that will be removed
+ * @return ExpenseDList 
+ */
+ExpenseDList popExpenseFromDList(ExpenseDList eli, expense exp);
+
+/**
  * @brief Prints the content of an expense dlist
  * 
  * @param eli {ExpenseDlist} : list to print
