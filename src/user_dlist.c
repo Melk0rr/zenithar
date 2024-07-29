@@ -232,7 +232,18 @@ void printUserDList(UserDList uli)
   UserDListNode *temp = uli->begin;
   
   while (temp->next != NULL) {
-    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.expenseSum);
+    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.UserSum);
     temp = temp->next;  
   }
+}
+
+// Function to clear a user dlist content : see user_dlist.h
+UserDList clearUserDlist(UserDList uli)
+{
+  while(!isUserDListEmpty(uli))
+  {
+    uli = popBackUserDList(uli);
+  }
+  
+  return newUserDList();
 }
