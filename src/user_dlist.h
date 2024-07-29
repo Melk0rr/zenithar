@@ -107,6 +107,15 @@ UserDList popBackUserDList(UserDList uli);
 UserDList popFrontUserDList(UserDList uli);
 
 /**
+ * @brief Removes a specific user from a user dlist
+ * 
+ * @param uli {UserDlist} : user dlist from which the user will be removed
+ * @param usr {user} : the user that will be removed
+ * @return UserDList 
+ */
+UserDList popUserFromDList(UserDList uli, user usr);
+
+/**
  * @brief Prints the content of an user dlist
  * 
  * @param eli {UserDlist} : list to print
