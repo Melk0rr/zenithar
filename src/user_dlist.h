@@ -113,4 +113,12 @@ UserDList popFrontUserDList(UserDList uli);
  */
 void printUserDList(UserDList uli);
 
+/**
+ * @brief Clears an user dlist content
+ * 
+ * @param uli {UserDlist} : user dlist to clear
+ * @return UserDList 
+ */
+UserDList clearUserDlist(UserDList uli);
+
 #endif
