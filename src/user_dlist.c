@@ -1,5 +1,6 @@
 #include "user_dlist.h"
 
+#include <cstddef>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -223,7 +224,48 @@ UserDList popFrontUserDList(UserDList uli)
 // Function to remove a specific user from a user dlist : see user_dlist.h
 UserDList popUserFromDList(UserDList uli, user usr)
 {
+  if (isUserDListEmpty(uli))
+  {
+    printf("printUserDlist::List is empty, nothing to print");
+    return newUserDList();
+  }
     
+  UserDListNode *temp = uli->begin;
+
+  while (&temp->nodeUser != &usr)
+  {
+    temp = temp->next;
+  }
+
+  if (uli->begin == uli->end)
+  {
+    free(uli);
+    uli = NULL;
+
+    return newUserDList();
+  }
+  else if (temp->prev == NULL)
+  {
+    return popFrontUserDList(uli);
+  }
+  else if (temp->next == NULL) {
+    return popBackUserDList(uli);
+  }
+  else {
+    // Pointing previous node to the next and vice versa
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+
+    temp->prev = NULL;
+    temp->next = NULL;
+
+    free(temp);
+    temp = NULL;
+
+    uli->length--;
+    
+    return uli;
+  }
 }
 
 // Function to print the content of an user dlist : see user_dlist.h
@@ -239,7 +281,7 @@ void printUserDList(UserDList uli)
   
   while (temp->next != NULL) {
     printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.expenseSum);
-    temp = temp->next;  
+    temp = temp->next;
   }
 }
 
