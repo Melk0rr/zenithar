@@ -220,6 +220,12 @@ UserDList popFrontUserDList(UserDList uli)
   return uli;
 }
 
+// Function to remove a specific user from a user dlist : see user_dlist.h
+UserDList popUserFromDList(UserDList uli, user usr)
+{
+    
+}
+
 // Function to print the content of an user dlist : see user_dlist.h
 void printUserDList(UserDList uli)
 {
@@ -232,7 +238,7 @@ void printUserDList(UserDList uli)
   UserDListNode *temp = uli->begin;
   
   while (temp->next != NULL) {
-    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.UserSum);
+    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.expenseSum);
     temp = temp->next;  
   }
 }
