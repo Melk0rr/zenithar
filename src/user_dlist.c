@@ -237,6 +237,7 @@ UserDList popUserFromDList(UserDList uli, user usr)
     temp = temp->next;
   }
 
+  // If list only contains one element
   if (uli->begin == uli->end)
   {
     free(uli);
@@ -244,10 +245,12 @@ UserDList popUserFromDList(UserDList uli, user usr)
 
     return newUserDList();
   }
+  // If first in list
   else if (temp->prev == NULL)
   {
     return popFrontUserDList(uli);
   }
+  // If last in list
   else if (temp->next == NULL) {
     return popBackUserDList(uli);
   }
@@ -263,7 +266,7 @@ UserDList popUserFromDList(UserDList uli, user usr)
     temp = NULL;
 
     uli->length--;
-    
+
     return uli;
   }
 }
