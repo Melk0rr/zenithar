@@ -226,7 +226,7 @@ UserDList popUserFromDList(UserDList uli, user usr)
 {
   if (isUserDListEmpty(uli))
   {
-    printf("printUserDlist::List is empty, nothing to print");
+    printf("popUserFromDList::List is empty, no user to pop");
     return newUserDList();
   }
     
