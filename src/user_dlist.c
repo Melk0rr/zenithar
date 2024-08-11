@@ -232,7 +232,7 @@ UserDList popUserFromDList(UserDList uli, user usr)
     
   UserDListNode *temp = uli->begin;
 
-  while (&temp->nodeUser != &usr)
+  while (temp != NULL && &temp->nodeUser != &usr)
   {
     temp = temp->next;
   }
@@ -248,11 +248,13 @@ UserDList popUserFromDList(UserDList uli, user usr)
   // If first in list
   else if (temp->prev == NULL)
   {
-    return popFrontUserDList(uli);
+    uli->begin = temp->next;
+    uli->begin->prev = NULL;
   }
   // If last in list
   else if (temp->next == NULL) {
-    return popBackUserDList(uli);
+    uli->end = temp->prev;
+    uli->end->next = NULL;
   }
   else {
     // Pointing previous node to the next and vice versa
@@ -264,11 +266,10 @@ UserDList popUserFromDList(UserDList uli, user usr)
 
     free(temp);
     temp = NULL;
-
-    uli->length--;
-
-    return uli;
   }
+
+  uli->length--;
+  return uli;
 }
 
 // Function to print the content of an user dlist : see user_dlist.h
