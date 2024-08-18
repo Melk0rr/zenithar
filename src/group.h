@@ -66,9 +66,8 @@ void addNewGroupMember(group *grp, const signed char *userName);
  * 
  * @param grp {group} : group from which the member will be removed
  * @param member {usr} : member to remove
- * @return int : -1 = fail | 0 = success
  */
-int removeGroupMember(group *grp, user *member);
+void removeGroupMember(group *grp, user *member);
 
 /**
  * @brief Clears group members

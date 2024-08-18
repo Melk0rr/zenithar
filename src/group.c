@@ -57,7 +57,7 @@ void addNewGroupMember(group *grp, const signed char *userName)
 }
 
 // Removes the given user from members of the provided group : see group.h
-int removeGroupMember(group *grp, user *member)
+void removeGroupMember(group *grp, user *member)
 {
   int i;
   
