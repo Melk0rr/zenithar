@@ -59,37 +59,7 @@ void addNewGroupMember(group *grp, const signed char *userName)
 // Removes the given user from members of the provided group : see group.h
 void removeGroupMember(group *grp, user *member)
 {
-  int i;
-  
-  // Find out member index
-  for (i = 0; i < grp->memberCount; i++)
-  {
-    if (grp->members[i] == member)
-    {
-      break;
-    }
-  }
-
-  if (i >= grp->memberCount)
-  {
-    char buffer[60];
-    sprintf(buffer, "Error: user %s is not a member of group %s", member->userName, grp->groupName);
-    printRed(buffer);
-    return -1;
-  }
-
-  // Remove the member
-  printf("Removing %s from %s\n", member->userName, grp->groupName);
-  --grp->memberCount;
-  for (int j = i; j < grp->memberCount; j++)
-  {
-    grp->members[j] = grp->members[j + 1];
-  }
-  
-  grp->members[grp->memberCount] = NULL;
-  free(grp->members[grp->memberCount]);
-  
-  return 0;
+  popUserFromDList(grp->members, *member);
 }
 
 // Clears group members : see group.h
