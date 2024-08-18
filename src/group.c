@@ -32,25 +32,13 @@ group *createGroup(const signed char *grpName)
 // Initializes group members : see group.h
 void initGroupMembers(group *grp, user *members, int numberOfMembers)
 {
-  if (members == NULL)
-  {
-    fprintf(stderr, "initGroupMembers::Provided members list is empty");
-    exit(1);
-  }
-
-  // Allocating memory
-  grp->members = malloc(numberOfMembers * sizeof(members[0]));
-  if (grp->members == NULL)
-  {
-    fprintf(stderr, "initGroupMembers::Memory allocation failed !\n");
-    exit(1);
-  }
-  grp->memberCount = numberOfMembers;
+  // Clearing members
+  grp->members = newUserDList();
 
   // Copying new members into the group member list
   for (int i = 0; i < numberOfMembers; i++)
   {
-    grp->members[i] = &members[i];
+    addGroupMember(grp, &members[i]);
   }
 }
 
