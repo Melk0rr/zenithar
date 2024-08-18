@@ -1,5 +1,6 @@
 #include "group.h"
 #include "utils.h"
+#include "user_dlist.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -56,42 +57,15 @@ void initGroupMembers(group *grp, user *members, int numberOfMembers)
 // Adds a new group into the given group : see group.h
 void addGroupMember(group *grp, user *newMember)
 {
-  user **newMemberList = realloc(grp->members, (grp->memberCount + 1) * sizeof(user));
-  if (newMemberList == NULL)
-  {
-    fprintf(stderr, "addGroupMember::Memory allocation failed !\n");
-    exit(1);
-  }
-  
-  // Update the group member list
-  grp->members = newMemberList;
-
-  // Adding the new user at the end of the member list
-  grp->members[grp->memberCount] = newMember;
-
-  // Updating the member count
-  grp->memberCount++;
+  pushBackUserDList(grp->members, *newMember);
 }
 
 // Creates a new user and add it to the list of members : see group.h
 void addNewGroupMember(group *grp, const signed char *userName)
 {
-  user **newMemberList = realloc(grp->members, (grp->memberCount + 1) * sizeof(user));
-  if (newMemberList == NULL)
-  {
-    fprintf(stderr, "addGroupMember::Memory allocation failed !\n");
-    exit(1);
-  }
-  
-  // Update the group member list
-  grp->members = newMemberList;
-
   // Adding the new user at the end of the member list
   user newMember = *createUser(userName);
-  grp->members[grp->memberCount] = &newMember;
-
-  // Updating the member count
-  grp->memberCount++;
+  addGroupMember(grp, &newMember);
 }
 
 // Removes the given user from members of the provided group : see group.h
