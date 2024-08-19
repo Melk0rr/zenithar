@@ -77,11 +77,7 @@ void clearGroupMembers(group *grp)
 // Prints the group member name : see group.h
 void printMemberNames(group *grp)
 {
-  printf("Members of %s are:\n", grp->groupName);
-  for (int i = 0; i < grp->memberCount; i++)
-  {
-    printf("%s\n", grp->members[i]->userName);
-  }
+  printUserNames(grp->members);
 }
 
 // #########################################################
