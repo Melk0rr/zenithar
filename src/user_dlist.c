@@ -288,6 +288,24 @@ void printUserDList(UserDList uli)
   }
 }
 
+// Function to print the names of the users in a user dlist : see user_dlist.h
+void printUserNames(UserDList uli)
+{
+  if (isUserDListEmpty(uli))
+  {
+    printf("printUserDlist::List is empty, nothing to print");
+    return;
+  }
+  
+  UserDListNode *temp = uli->begin;
+  
+  while (temp->next != NULL) {
+    printf("%s\n", temp->nodeUser.userName);
+    temp = temp->next;
+  }
+
+}
+
 // Function to clear a user dlist content : see user_dlist.h
 UserDList clearUserDlist(UserDList uli)
 {

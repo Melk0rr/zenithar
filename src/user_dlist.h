@@ -116,11 +116,18 @@ UserDList popFrontUserDList(UserDList uli);
 UserDList popUserFromDList(UserDList uli, user usr);
 
 /**
- * @brief Prints the content of an user dlist
+ * @brief Prints the content of a user dlist : username + user expense sum
  * 
  * @param eli {UserDlist} : list to print
  */
 void printUserDList(UserDList uli);
+
+/**
+ * @brief Prints the content of a user dlist : username only
+ * 
+ * @param eli {UserDlist} : list to print
+ */
+void printUserNames(UserDList uli);
 
 /**
  * @brief Clears an user dlist content
