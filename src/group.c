@@ -88,10 +88,11 @@ float sumGroupExpenses(group *grp)
 {
   float grpExpSum = 0;
 
-  for (int i = 0; i < grp->memberCount; i++)
+  UserDListNode *temp = grp->members->begin;
+  while (temp->next != NULL)
   {
-    user *m = grp->members[i];
-    grpExpSum += m->expenseSum;
+    grpExpSum += temp->nodeUser->expenseSum;
+    temp = temp->next;
   }
 
   printf("Group expenses: %f\n", grpExpSum);
