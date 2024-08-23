@@ -24,7 +24,6 @@ group *createGroup(const signed char *grpName)
   newGroup->groupName[sizeof(newGroup->groupName) - 1] = '\0';
   
   newGroup->members = NULL;
-  newGroup->memberCount = 0;
 
   return newGroup;
 }
@@ -65,13 +64,7 @@ void removeGroupMember(group *grp, user *member)
 // Clears group members : see group.h
 void clearGroupMembers(group *grp)
 {
-  for (int i = 0; i < grp->memberCount; i++)
-  {
-    grp->members[i] = NULL;
-  }
-  
-  free(grp->members);
-  grp->memberCount = 0;
+  clearUserDlist(grp->members);
 }
 
 // Prints the group member name : see group.h

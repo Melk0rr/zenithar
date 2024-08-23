@@ -18,9 +18,6 @@ typedef struct group
 
   // Member list which contains users
   UserDList members;
-
-  // Number of members in the group
-  int memberCount;
 } group;
 
 // #########################################################
