@@ -132,7 +132,7 @@ void resetGroupExpenses(group *grp)
   for (int i = 0; i < grp->memberCount; i++)
   {
     resetUserExpenses(grp->members[i]);
-  }  
+  }
 }
 
 // #########################################################
@@ -141,12 +141,15 @@ void resetGroupExpenses(group *grp)
 // Retreive a group member by name : see group.h
 user *getMemberByName(group *grp, const signed char *userName)
 {
-  for (int i = 0; i < grp->memberCount; i++)
+  UserDListNode *temp = grp->members->begin;
+  while (temp->next != NULL)
   {
-    if (grp->members[i]->userName == userName)
+    if (temp->nodeUser.userName == userName)
     {
-      return grp->members[i];
+      return &temp->nodeUser;
     }
+    
+    temp = temp->next;
   }
 
   return NULL;
