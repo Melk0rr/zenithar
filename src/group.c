@@ -121,11 +121,11 @@ void getGroupBalance(group *grp)
     char buffer[50];
     if (memberDue >= 0)
     {
-		  sprintf(buffer, "%s | +%f", (char *)m->userName, memberDue);
+		  sprintf(buffer, "%s | +%f", (char *)temp->nodeUser.userName, memberDue);
       printGreen(buffer);
 
     } else {
-      sprintf(buffer, "%f | %s", memberDue, m->userName);
+      sprintf(buffer, "%f | %s", memberDue, temp->nodeUser.userName);
       printRed(buffer);
     }
 
