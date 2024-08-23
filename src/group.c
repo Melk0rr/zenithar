@@ -102,7 +102,7 @@ float sumGroupExpenses(group *grp)
 // Returns the share value based on current group expenses : see group.h
 float getShare(group *grp) {
   float sumOfGrpExpenses = sumGroupExpenses(grp);
-  float share = sumOfGrpExpenses / grp->memberCount;
+  float share = sumOfGrpExpenses / grp->members->length;
   printf("Share for current expenses is: %f\n", share);
 
   return share;
