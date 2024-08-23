@@ -91,7 +91,7 @@ float sumGroupExpenses(group *grp)
   UserDListNode *temp = grp->members->begin;
   while (temp->next != NULL)
   {
-    grpExpSum += temp->nodeUser->expenseSum;
+    grpExpSum += temp->nodeUser.expenseSum;
     temp = temp->next;
   }
 
@@ -113,11 +113,11 @@ void getGroupBalance(group *grp)
 {
   float share = getShare(grp);
 
-  for (int i = 0; i < grp->memberCount; i++)
+  UserDListNode *temp = grp->members->begin;
+  while (temp->next != NULL)
   {
-    user *m = grp->members[i];
-    float memberDue = m->expenseSum - share;
-  
+    float memberDue = temp->nodeUser.expenseSum - share;
+
     char buffer[50];
     if (memberDue >= 0)
     {
@@ -128,6 +128,8 @@ void getGroupBalance(group *grp)
       sprintf(buffer, "%f | %s", memberDue, m->userName);
       printRed(buffer);
     }
+
+    temp = temp->next;
   }
 }
 
