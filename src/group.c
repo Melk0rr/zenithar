@@ -1,4 +1,5 @@
 #include "group.h"
+#include "user.h"
 #include "utils.h"
 #include "user_dlist.h"
 
@@ -84,7 +85,7 @@ float sumGroupExpenses(group *grp)
   UserDListNode *temp = grp->members->begin;
   while (temp->next != NULL)
   {
-    grpExpSum += temp->nodeUser.expenseSum;
+    grpExpSum += getUserExpenseSum(&temp->nodeUser);
     temp = temp->next;
   }
 
@@ -129,7 +130,7 @@ void getGroupBalance(group *grp)
 // Resets group expenses
 void resetGroupExpenses(group *grp)
 {
-  for (int i = 0; i < grp->memberCount; i++)
+  for (int i = 0; i < grp->members->length; i++)
   {
     resetUserExpenses(grp->members[i]);
   }
