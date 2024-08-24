@@ -97,6 +97,8 @@ ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp)
   }
   
   eli->length++;
+  eli->sum += exp.expenseCost;
+
   return eli;
 }
 
@@ -142,6 +144,8 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp)
   }
   
   eli->length++;
+  eli->sum += exp.expenseCost;
+
   return eli;
 }
 
@@ -174,6 +178,7 @@ ExpenseDList popBackExpenseDList(ExpenseDList eli)
   // Deleting removed node links to prev and next
   tmp->next = NULL;
   tmp->prev = NULL;
+  eli->sum -= tmp->nodeExpense.expenseCost;
 
   free(tmp);
   tmp = NULL;
@@ -212,6 +217,7 @@ ExpenseDList popFrontExpenseDList(ExpenseDList eli)
   // Deleting removed node links to prev and next
   tmp->next = NULL;
   tmp->prev = NULL;
+  eli->sum -= tmp->nodeExpense.expenseCost;
 
   free(tmp);
   tmp = NULL;
@@ -247,21 +253,4 @@ ExpenseDList clearExpenseDlist(ExpenseDList eli)
   }
   
   return newExpenseDList();
-}
-
-// Function to sum all expenses : see expense_dlist.h
-float sumDListExpenses(ExpenseDList eli)
-{
-  float expenseSum = 0;
-  if (!isExpenseDListEmpty(eli))
-  {
-    ExpenseDListNode *temp = eli->begin;
-  
-    while (temp->next != NULL) {
-      expenseSum += temp->nodeExpense.expenseCost;
-      temp = temp->next;
-    }
-  }
-  
-  return expenseSum;
 }

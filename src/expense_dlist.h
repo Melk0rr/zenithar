@@ -25,6 +25,7 @@ typedef struct ExpenseDListNode
 typedef struct ExpenseDList
 {
   int length;
+  float sum;
   struct ExpenseDListNode *begin;
   struct ExpenseDListNode *end;
 } *ExpenseDList;
@@ -129,13 +130,5 @@ void printExpenseDList(ExpenseDList eli);
  * @return ExpenseDList 
  */
 ExpenseDList clearExpenseDlist(ExpenseDList eli);
-
-/**
- * @brief Sums all the expense dlist node expenses
- * 
- * @param eli {ExpenseDlist} : expense dlist which expenses will be summed
- * @return ExpenseDList 
- */
-float sumDListExpenses(ExpenseDList eli);
 
 #endif
