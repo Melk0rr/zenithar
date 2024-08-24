@@ -18,9 +18,6 @@ typedef struct user
 
   // List of the user expenses
   ExpenseDList expenseList;
-  
-  // Sum of the user's expenses
-  float expenseSum;
 } user;
 
 // #########################################################
@@ -43,12 +40,12 @@ user *createUser(const signed char *usrName);
 void addNewUserExpense(user *usr, const signed char *expName, float expCost);
 
 /**
- * @brief Calculates the sum of a user's expenses
+ * @brief Returns the given user expense sum
  * 
  * @param usr {user} : target user
- * @return int : sum of the expenses
+ * @return float : sum of the expenses
  */
-void sumUserExpenses(user *usr);
+float getUserExpenseSum(user *usr);
 
 /**
  * @brief Resets expenses for the given user

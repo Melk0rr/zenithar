@@ -23,7 +23,6 @@ user *createUser(const signed char *usrName)
   newUser->userName[sizeof(newUser->userName) - 1] = '\0';
 
   newUser->expenseList = newExpenseDList();
-  newUser->expenseSum = 0;
 
   return newUser;
 }
@@ -34,22 +33,19 @@ void addNewUserExpense(user *usr, const signed char *expName, float expCost)
   // Add new expense
   expense newExp = *createExpense(expName, expCost);
   pushBackExpenseDList(usr->expenseList, newExp);
-  
-  sumUserExpenses(usr);
 }
 
 // #########################################################
 // User expenses
 
 // Sums the given user expenses : see user.h
-void sumUserExpenses(user *usr)
+float getUserExpenseSum(user *usr)
 {
-  usr->expenseSum = sumDListExpenses(usr->expenseList);
+  return usr->expenseList->sum;
 }
 
 // Resets given user expenses : see user.h
 void resetUserExpenses(user *usr)
 {
   usr->expenseList = clearExpenseDlist(usr->expenseList);
-  usr->expenseSum = 0;
 }
