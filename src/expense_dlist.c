@@ -1,4 +1,5 @@
 #include "expense_dlist.h"
+#include "expense.h"
 #include "utils.h"
 
 #include <stdio.h>
@@ -224,6 +225,57 @@ ExpenseDList popFrontExpenseDList(ExpenseDList eli)
 
   eli->length--;
 
+  return eli;
+}
+
+// Function to remove a specific expense from an expense dlist : see expense_dlist.h
+ExpenseDList popExpenseFromDList(ExpenseDList eli, expense exp)
+{
+  if (isExpenseDListEmpty(eli))
+  {
+    printf("popUserFromDList::List is empty, no user to pop");
+    return newExpenseDList();
+  }
+    
+  ExpenseDListNode *temp = eli->begin;
+
+  while (temp != NULL && &temp->nodeExpense != &exp)
+  {
+    temp = temp->next;
+  }
+
+  // If list only contains one element
+  if (eli->begin == eli->end)
+  {
+    free(eli);
+    eli = NULL;
+
+    return newExpenseDList();
+  }
+  // If first in list
+  else if (temp->prev == NULL)
+  {
+    eli->begin = temp->next;
+    eli->begin->prev = NULL;
+  }
+  // If last in list
+  else if (temp->next == NULL) {
+    eli->end = temp->prev;
+    eli->end->next = NULL;
+  }
+  else {
+    // Pointing previous node to the next and vice versa
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+
+    temp->prev = NULL;
+    temp->next = NULL;
+  }
+
+  free(temp);
+  temp = NULL;
+
+  eli->length--;
   return eli;
 }
 
