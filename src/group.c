@@ -110,7 +110,7 @@ void getGroupBalance(group *grp)
   UserDListNode *temp = grp->members->begin;
   while (temp->next != NULL)
   {
-    float memberDue = temp->nodeUser.expenseSum - share;
+    float memberDue = getUserExpenseSum(&temp->nodeUser) - share;
 
     char buffer[50];
     if (memberDue >= 0)
