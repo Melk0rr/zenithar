@@ -130,9 +130,11 @@ void getGroupBalance(group *grp)
 // Resets group expenses
 void resetGroupExpenses(group *grp)
 {
-  for (int i = 0; i < grp->members->length; i++)
+  UserDListNode *temp = grp->members->begin;
+  while (temp->next != NULL)
   {
-    resetUserExpenses(grp->members[i]);
+    resetUserExpenses(&temp->nodeUser);
+    temp = temp->next;
   }
 }
 
