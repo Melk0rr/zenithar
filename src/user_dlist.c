@@ -236,6 +236,12 @@ UserDList popUserFromDList(UserDList uli, user usr)
     temp = temp->next;
   }
 
+  if (temp == NULL)
+  {
+    printf("popUserFromDList::Could not find the user to pop");
+    return uli;
+  }
+
   // If list only contains one element
   if (uli->begin == uli->end)
   {
