@@ -278,28 +278,21 @@ UserDList popUserFromDList(UserDList uli, user usr)
 }
 
 // Function to find a user in a user dlist : see user_dlist.h
-user *findUserByName(UserDList uli, const signed char usrName)
+UserDListNode *findUserNodeByName(UserDList uli, const signed char usrName)
 {
-  user *usr = NULL;
-  if (isUserDListEmpty(uli))
+  UserDListNode *temp = NULL;
+
+  if (!isUserDListEmpty(uli))
   {
-    printf("popUserFromDList::List is empty, no user to find");
-    return usr;
+    temp = uli->begin;
+
+    while(temp != NULL && *temp->nodeUser.userName != usrName)
+    {
+      temp = temp->next;
+    }
   }
   
-  UserDListNode *temp = uli->begin;
-
-  while(temp != NULL && *temp->nodeUser.userName != usrName)
-  {
-    temp = temp->next;
-  }
-  
-  if (temp != NULL)
-  {
-    usr = &temp->nodeUser;
-  }
-
-  return usr;
+  return temp;
 }
 
 // Function to print the content of an user dlist : see user_dlist.h
