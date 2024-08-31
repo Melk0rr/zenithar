@@ -283,7 +283,7 @@ void printUserDList(UserDList uli)
   UserDListNode *temp = uli->begin;
   
   while (temp->next != NULL) {
-    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.expenseSum);
+    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.expenseList->sum);
     temp = temp->next;
   }
 }
