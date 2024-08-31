@@ -122,7 +122,7 @@ UserDList popUserFromDList(UserDList uli, user usr);
  * @param usrName {const signed char} : user name
  * @return user : found user or NULL
  */
-user findUserByName(UserDList uli, const signed char usrName);
+user *findUserByName(UserDList uli, const signed char usrName);
 
 /**
  * @brief Prints the content of a user dlist : username + user expense sum
