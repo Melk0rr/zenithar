@@ -182,7 +182,7 @@ UserDList popBackUserDList(UserDList uli)
   return uli;
 }
 
-// Function to pop an user node from given list beginning : see user_dlist.h
+// Function to pop a user node from given list beginning : see user_dlist.h
 UserDList popFrontUserDList(UserDList uli)
 {
   if (isUserDListEmpty(uli))
@@ -275,6 +275,13 @@ UserDList popUserFromDList(UserDList uli, user usr)
 
   uli->length--;
   return uli;
+}
+
+// Function to find a user in a user dlist : see user_dlist.h
+user findUserByName(UserDList uli, const signed char usrName)
+{
+  
+  
 }
 
 // Function to print the content of an user dlist : see user_dlist.h
