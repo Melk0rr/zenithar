@@ -1,8 +1,8 @@
 #ifndef __EXPENSE_DLIST__H__
 #define __EXPENSE_DLIST__H__
 
-#import "expense.h"
-#import "utils.h"
+#include "expense.h"
+#include "utils.h"
 
 // #########################################################
 // Expense DList and node struct definition
