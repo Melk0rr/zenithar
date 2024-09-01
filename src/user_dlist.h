@@ -1,8 +1,8 @@
 #ifndef __USER_DLIST__H__
 #define __USER_DLIST__H__
 
-#import "user.h"
-#import "utils.h"
+#include "user.h"
+#include "utils.h"
 
 // #########################################################
 // User DList and node struct definition
