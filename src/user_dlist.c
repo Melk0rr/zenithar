@@ -57,7 +57,7 @@ user getLastUserDListNode(UserDList uli)
 // Function to push a new user at the end of an user dlist : see user_dlist.h
 UserDList pushBackUserDList(UserDList uli, user usr)
 {
-  UserDListNode *usrNode = malloc(sizeof(*usrNode));
+  UserDListNode *usrNode = (UserDListNode *)malloc(sizeof(*usrNode));
   
   if (usrNode == NULL)
   {
@@ -102,7 +102,7 @@ UserDList pushBackUserDList(UserDList uli, user usr)
 // Function to push a new user at the beginning of an user dlist : see user_dlist.h
 UserDList pushFrontUserDList(UserDList uli, user usr)
 {
-  UserDListNode *usrNode = malloc(sizeof(*usrNode));
+  UserDListNode *usrNode = (UserDListNode *)malloc(sizeof(*usrNode));
   
   if (usrNode == NULL)
   {
@@ -280,7 +280,7 @@ UserDList popUserFromDList(UserDList uli, user usr)
 // Function to find a user in a user dlist : see user_dlist.h
 UserDListNode *findUserNodeByName(UserDList uli, const signed char usrName)
 {
-  UserDListNode *temp = NULL;
+  UserDListNode *temp = (UserDListNode *)malloc(sizeof(*temp));
 
   if (!isUserDListEmpty(uli))
   {
