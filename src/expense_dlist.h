@@ -28,7 +28,7 @@ typedef struct ExpenseDList
   float sum;
   struct ExpenseDListNode *begin;
   struct ExpenseDListNode *end;
-} *ExpenseDList;
+} ExpenseDList;
 
 // #########################################################
 // Prototypes
@@ -38,7 +38,7 @@ typedef struct ExpenseDList
  * 
  * @return ExpenseDList : new empty expense dlist
  */
-ExpenseDList newExpenseDList(void);
+ExpenseDList *newExpenseDList(void);
 
 /**
  * @brief Checks if an expense dlist is empty
@@ -47,7 +47,7 @@ ExpenseDList newExpenseDList(void);
  * @return true : the list is empty
  * @return false : the list is not empty
  */
-bool isExpenseDListEmpty(ExpenseDList eli);
+bool isExpenseDListEmpty(ExpenseDList *eli);
 
 /**
  * @brief Returns the current length of the expense dlist
@@ -55,7 +55,7 @@ bool isExpenseDListEmpty(ExpenseDList eli);
  * @param eli {ExpenseDList} : targeted dlist
  * @return int : length of the targeted length
  */
-int expenseDListLength(ExpenseDList eli);
+int expenseDListLength(ExpenseDList *eli);
 
 /**
  * @brief Get the First Expense D List Node object
@@ -63,7 +63,7 @@ int expenseDListLength(ExpenseDList eli);
  * @param eli {ExpenseDList} : list from which retreive first node
  * @return expense : first expense
  */
-expense getFirstExpenseDListNode(ExpenseDList eli);
+expense *getFirstExpenseDListNode(ExpenseDList *eli);
 
 /**
  * @brief Get the Last Expense D List Node object
@@ -71,7 +71,7 @@ expense getFirstExpenseDListNode(ExpenseDList eli);
  * @param eli {ExpenseDList} : list from which retreive first node
  * @return expense : last expense
  */
-expense getLastExpenseDListNode(ExpenseDList eli);
+expense *getLastExpenseDListNode(ExpenseDList *eli);
 
 /**
  * @brief Pushes an expense node at the end of the given expense dlist
@@ -80,7 +80,7 @@ expense getLastExpenseDListNode(ExpenseDList eli);
  * @param exp {expense} : expense to push
  * @return ExpenseDList 
  */
-ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp);
+ExpenseDList *pushBackExpenseDList(ExpenseDList *eli, expense exp);
 
 /**
  * @brief Pushes an expense node at the beginning of the given expense dlist
@@ -89,7 +89,7 @@ ExpenseDList pushBackExpenseDList(ExpenseDList eli, expense exp);
  * @param exp {expense} : expense to push
  * @return ExpenseDList 
  */
-ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp);
+ExpenseDList *pushFrontExpenseDList(ExpenseDList *eli, expense exp);
 
 /**
  * @brief Pops an expense node from the end of the given expense dlist
@@ -97,7 +97,7 @@ ExpenseDList pushFrontExpenseDList(ExpenseDList eli, expense exp);
  * @param eli {ExpenseDList} : expense dlist from which a node will be poped
  * @return ExpenseDList 
  */
-ExpenseDList popBackExpenseDList(ExpenseDList eli);
+ExpenseDList *popBackExpenseDList(ExpenseDList *eli);
 
 /**
  * @brief Pops an expense node from the beginning of the given expense dlist
@@ -105,7 +105,7 @@ ExpenseDList popBackExpenseDList(ExpenseDList eli);
  * @param eli {ExpenseDList} : expense dlist from which a node will be poped
  * @return ExpenseDList 
  */
-ExpenseDList popFrontExpenseDList(ExpenseDList eli);
+ExpenseDList *popFrontExpenseDList(ExpenseDList *eli);
 
 /**
  * @brief Removes a specific expense from an expense dlist
@@ -114,14 +114,14 @@ ExpenseDList popFrontExpenseDList(ExpenseDList eli);
  * @param exp {Expense} : the expense that will be removed
  * @return ExpenseDList 
  */
-ExpenseDList popExpenseFromDList(ExpenseDList eli, expense exp);
+ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense exp);
 
 /**
  * @brief Prints the content of an expense dlist
  * 
  * @param eli {ExpenseDlist} : list to print
  */
-void printExpenseDList(ExpenseDList eli);
+void printExpenseDList(ExpenseDList *eli);
 
 /**
  * @brief Clears an expense dlist content
@@ -129,6 +129,6 @@ void printExpenseDList(ExpenseDList eli);
  * @param eli {ExpenseDlist} : expense dlist to clear
  * @return ExpenseDList 
  */
-ExpenseDList clearExpenseDlist(ExpenseDList eli);
+ExpenseDList *clearExpenseDlist(ExpenseDList *eli);
 
 #endif
