@@ -13,7 +13,7 @@
  */
 typedef struct UserDListNode
 {
-  user nodeUser;
+  user *nodeUser;
   struct UserDListNode *prev;
   struct UserDListNode *next;
 } UserDListNode;
@@ -79,7 +79,7 @@ user *getLastUserDListNode(UserDList *uli);
  * @param usr {user} : user to push
  * @return UserDList 
  */
-UserDList *pushBackUserDList(UserDList *uli, user usr);
+UserDList *pushBackUserDList(UserDList *uli, user *usr);
 
 /**
  * @brief Pushes a user node at the beginning of the given user dlist
@@ -88,7 +88,7 @@ UserDList *pushBackUserDList(UserDList *uli, user usr);
  * @param usr {user} : user to push
  * @return UserDList 
  */
-UserDList *pushFrontUserDList(UserDList *uli, user usr);
+UserDList *pushFrontUserDList(UserDList *uli, user *usr);
 
 /**
  * @brief Pops an user node from the end of the given user dlist
@@ -113,7 +113,7 @@ UserDList *popFrontUserDList(UserDList *uli);
  * @param usr {user} : the user that will be removed
  * @return UserDList 
  */
-UserDList *popUserFromDList(UserDList *uli, user usr);
+UserDList *popUserFromDList(UserDList *uli, user *usr);
 
 /**
  * @brief Finds a user in a user dlist based on its name

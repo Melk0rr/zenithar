@@ -31,7 +31,7 @@ user *createUser(const signed char *usrName)
 void addNewUserExpense(user *usr, const signed char *expName, float expCost)
 {
   // Add new expense
-  expense newExp = *createExpense(expName, expCost);
+  expense *newExp = createExpense(expName, expCost);
   usr->expenseList = *pushBackExpenseDList(&usr->expenseList, newExp);
 }
 

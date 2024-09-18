@@ -1,4 +1,5 @@
 #include "group.h"
+#include "expense_dlist.h"
 #include "user.h"
 #include "utils.h"
 #include "user_dlist.h"
@@ -45,7 +46,7 @@ void initGroupMembers(group *grp, user *members, int numberOfMembers)
 // Adds a new group into the given group : see group.h
 void addGroupMember(group *grp, user *newMember)
 {
-  grp->members = *pushBackUserDList(&grp->members, *newMember);
+  grp->members = *pushBackUserDList(&grp->members, newMember);
 }
 
 // Creates a new user and add it to the list of members : see group.h
@@ -59,7 +60,7 @@ void addNewGroupMember(group *grp, const signed char *userName)
 // Removes the given user from members of the provided group : see group.h
 void removeGroupMember(group *grp, user *member)
 {
-  popUserFromDList(&grp->members, *member);
+  popUserFromDList(&grp->members, member);
 }
 
 // Clears group members : see group.h
@@ -89,10 +90,12 @@ float sumGroupExpenses(group *grp)
   }
 
   UserDListNode *temp = grp->members.begin;
+
+  printExpenseDList(&temp->nodeUser->expenseList);
   
-  while (temp->next != NULL)
+  while (temp != NULL)
   {
-    grpExpSum += getUserExpenseSum(&temp->nodeUser);
+    grpExpSum += getUserExpenseSum(temp->nodeUser);
     temp = temp->next;
   }
 
@@ -123,18 +126,18 @@ void getGroupBalance(group *grp)
   float share = getShare(grp);
 
   UserDListNode *temp = grp->members.begin;
-  while (temp->next != NULL)
+  while (temp != NULL)
   {
-    float memberDue = getUserExpenseSum(&temp->nodeUser) - share;
+    float memberDue = getUserExpenseSum(temp->nodeUser) - share;
 
     char buffer[50];
     if (memberDue >= 0)
     {
-		  sprintf(buffer, "%s | +%f", (char *)temp->nodeUser.userName, memberDue);
+		  sprintf(buffer, "%s | +%f", (char *)temp->nodeUser->userName, memberDue);
       printGreen(buffer);
 
     } else {
-      sprintf(buffer, "%f | %s", memberDue, temp->nodeUser.userName);
+      sprintf(buffer, "%f | %s", memberDue, temp->nodeUser->userName);
       printRed(buffer);
     }
 
@@ -148,7 +151,7 @@ void resetGroupExpenses(group *grp)
   UserDListNode *temp = grp->members.begin;
   while (temp->next != NULL)
   {
-    resetUserExpenses(&temp->nodeUser);
+    resetUserExpenses(temp->nodeUser);
     temp = temp->next;
   }
 }
@@ -162,9 +165,9 @@ user *getMemberByName(group *grp, const signed char *userName)
   UserDListNode *temp = grp->members.begin;
   while (temp->next != NULL)
   {
-    if (temp->nodeUser.userName == userName)
+    if (temp->nodeUser->userName == userName)
     {
-      return &temp->nodeUser;
+      return temp->nodeUser;
     }
     
     temp = temp->next;

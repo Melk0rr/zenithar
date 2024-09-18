@@ -13,7 +13,7 @@
  */
 typedef struct ExpenseDListNode
 {
-  expense nodeExpense;
+  expense *nodeExpense;
   struct ExpenseDListNode *prev;
   struct ExpenseDListNode *next;
 } ExpenseDListNode;
@@ -80,7 +80,7 @@ expense *getLastExpenseDListNode(ExpenseDList *eli);
  * @param exp {expense} : expense to push
  * @return ExpenseDList 
  */
-ExpenseDList *pushBackExpenseDList(ExpenseDList *eli, expense exp);
+ExpenseDList *pushBackExpenseDList(ExpenseDList *eli, expense *exp);
 
 /**
  * @brief Pushes an expense node at the beginning of the given expense dlist
@@ -89,7 +89,7 @@ ExpenseDList *pushBackExpenseDList(ExpenseDList *eli, expense exp);
  * @param exp {expense} : expense to push
  * @return ExpenseDList 
  */
-ExpenseDList *pushFrontExpenseDList(ExpenseDList *eli, expense exp);
+ExpenseDList *pushFrontExpenseDList(ExpenseDList *eli, expense *exp);
 
 /**
  * @brief Pops an expense node from the end of the given expense dlist
@@ -114,7 +114,7 @@ ExpenseDList *popFrontExpenseDList(ExpenseDList *eli);
  * @param exp {Expense} : the expense that will be removed
  * @return ExpenseDList 
  */
-ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense exp);
+ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense *exp);
 
 /**
  * @brief Prints the content of an expense dlist

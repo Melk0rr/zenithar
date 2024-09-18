@@ -48,7 +48,7 @@ user *getFirstUserDListNode(UserDList *uli)
     exit(1);
   }
 
-  return &uli->begin->nodeUser;
+  return uli->begin->nodeUser;
 }
 
 // Function to retreive the last element of user dlist : see user_dlist.h
@@ -59,11 +59,11 @@ user *getLastUserDListNode(UserDList *uli)
     exit(1);
   }
 
-  return &uli->end->nodeUser;
+  return uli->end->nodeUser;
 }
 
 // Function to push a new user at the end of an user dlist : see user_dlist.h
-UserDList *pushBackUserDList(UserDList *uli, user usr)
+UserDList *pushBackUserDList(UserDList *uli, user *usr)
 {
   UserDListNode *usrNode = malloc(sizeof(*usrNode));
   
@@ -86,7 +86,6 @@ UserDList *pushBackUserDList(UserDList *uli, user usr)
       fprintf(stderr, "pusBackUserDList::Memory allocation failed for empty UserList !");
       exit(1);
     }
-    printf("coucou\n");
     
     // If dlist is empty : new node is the first and last element
     uli->begin = usrNode;
@@ -108,7 +107,7 @@ UserDList *pushBackUserDList(UserDList *uli, user usr)
 }
 
 // Function to push a new user at the beginning of an user dlist : see user_dlist.h
-UserDList *pushFrontUserDList(UserDList *uli, user usr)
+UserDList *pushFrontUserDList(UserDList *uli, user *usr)
 {
   UserDListNode *usrNode = (UserDListNode *)malloc(sizeof(*usrNode));
   
@@ -228,7 +227,7 @@ UserDList *popFrontUserDList(UserDList *uli)
 }
 
 // Function to remove a specific user from a user dlist : see user_dlist.h
-UserDList *popUserFromDList(UserDList *uli, user usr)
+UserDList *popUserFromDList(UserDList *uli, user *usr)
 {
   if (isUserDListEmpty(uli))
   {
@@ -293,7 +292,7 @@ UserDListNode *findUserNodeByName(UserDList *uli, const signed char usrName)
   {
     temp = uli->begin;
 
-    while(temp != NULL && *temp->nodeUser.userName != usrName)
+    while(temp != NULL && *temp->nodeUser->userName != usrName)
     {
       temp = temp->next;
     }
@@ -314,7 +313,7 @@ void printUserDList(UserDList *uli)
   UserDListNode *temp = uli->begin;
   
   while (temp->next != NULL) {
-    printf("%s : %f\n", temp->nodeUser.userName, temp->nodeUser.expenseList.sum);
+    printf("%s : %f\n", temp->nodeUser->userName, temp->nodeUser->expenseList.sum);
     temp = temp->next;
   }
 }
@@ -331,7 +330,7 @@ void printUserNames(UserDList *uli)
   UserDListNode *temp = uli->begin;
   
   while (temp != NULL) {
-    printf("%s\n", temp->nodeUser.userName);
+    printf("%s\n", temp->nodeUser->userName);
     temp = temp->next;
   }
 }
