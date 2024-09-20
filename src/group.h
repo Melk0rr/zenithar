@@ -17,7 +17,7 @@ typedef struct group
   signed char groupName[25];
 
   // Member list which contains users
-  UserDList members;
+  UserDList *members;
 } group;
 
 // #########################################################
