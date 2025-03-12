@@ -1,9 +1,10 @@
-#include "expense_dlist.h"
-#include "expense.h"
-#include "utils.h"
+// INFO: DList to handle expenses
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "expense_dlist.h"
+#include "expense.h"
 
 // Function to create an empty expense dlist : see expense_dlist.h
 ExpenseDList *newExpenseDList()
@@ -28,7 +29,7 @@ bool isExpenseDListEmpty(ExpenseDList *eli)
   {
     return true;
   }
-  
+
   return false;
 }
 
@@ -39,7 +40,7 @@ int expenseDListLength(ExpenseDList *eli)
   {
     return 0;
   }
-  
+
   return eli->length;
 }
 
@@ -65,92 +66,102 @@ expense *getLastExpenseDListNode(ExpenseDList *eli)
   return eli->end->nodeExpense;
 }
 
-// Function to push a new expense at the end of an expense dlist : see expense_dlist.h
+// Function to push a new expense at the end of an expense dlist : see
+// expense_dlist.h
 ExpenseDList *pushBackExpenseDList(ExpenseDList *eli, expense *exp)
 {
   ExpenseDListNode *expNode = malloc(sizeof(*expNode));
-  
+
   if (expNode == NULL)
   {
-    fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for new ExpenseDListNode !");
+    fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for new "
+                    "ExpenseDListNode !");
     exit(1);
   }
 
   expNode->nodeExpense = exp;
   expNode->prev = NULL;
   expNode->next = NULL;
-  
+
   if (isExpenseDListEmpty(eli))
   {
     eli = malloc(sizeof(*eli));
 
     if (eli == NULL)
     {
-      fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for empty ExpenseList !");
+      fprintf(stderr, "pushBackExpenseDList::Memory allocation failed for "
+                      "empty ExpenseList !");
       exit(1);
     }
-    
+
     // If dlist is empty : new node is the first and last element
     eli->begin = expNode;
     eli->end = expNode;
 
-  } else {
-    // If dlist is not empty : Last dlist element next pointer now points to new node
+  } else
+  {
+    // If dlist is not empty : Last dlist element next pointer now points to new
+    // node
     eli->end->next = expNode;
 
     // New node prev pointer now points to the previous last dlist element
     expNode->prev = eli->end;
-    
+
     // And dlist end now points to the new node
     eli->end = expNode;
   }
-  
+
   eli->length++;
   eli->sum += exp->expenseCost;
 
   return eli;
 }
 
-// Function to push a new expense at the beginning of an expense dlist : see expense_dlist.h
+// Function to push a new expense at the beginning of an expense dlist : see
+// expense_dlist.h
 ExpenseDList *pushFrontExpenseDList(ExpenseDList *eli, expense *exp)
 {
   ExpenseDListNode *expNode = malloc(sizeof(*expNode));
-  
+
   if (expNode == NULL)
   {
-    fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for new ExpenseDListNode !");
+    fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for new "
+                    "ExpenseDListNode !");
     exit(1);
   }
 
   expNode->nodeExpense = exp;
   expNode->prev = NULL;
   expNode->next = NULL;
-  
+
   if (isExpenseDListEmpty(eli))
   {
     eli = malloc(sizeof(*eli));
 
     if (eli == NULL)
     {
-      fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for empty ExpenseList !");
+      fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for "
+                      "empty ExpenseList !");
       exit(1);
     }
-    
+
     // If dlist is empty : new node is the first and last element
     eli->begin = expNode;
     eli->end = expNode;
 
-  } else {
-    // If dlist is not empty : Last dlist element next pointer now points to new node
+  } else
+  {
+    // If dlist is not empty : Last dlist element next pointer now points to new
+    // node
     eli->begin->prev = expNode;
 
     // New node prev pointer now points to the previous last dlist element
     expNode->next = eli->begin;
-    
+
     // And dlist end now points to the new node
     eli->begin = expNode;
   }
-  
+
   eli->length++;
   eli->sum += exp->expenseCost;
 
@@ -165,7 +176,7 @@ ExpenseDList *popBackExpenseDList(ExpenseDList *eli)
     printf("popBackExpenseDList::List is empty. Nothing to pop.\n");
     return newExpenseDList();
   }
-  
+
   // Check if the list contains only one element
   if (eli->begin == eli->end)
   {
@@ -196,7 +207,8 @@ ExpenseDList *popBackExpenseDList(ExpenseDList *eli)
   return eli;
 }
 
-// Function to pop an expense node from given list beginning : see expense_dlist.h
+// Function to pop an expense node from given list beginning : see
+// expense_dlist.h
 ExpenseDList *popFrontExpenseDList(ExpenseDList *eli)
 {
   if (isExpenseDListEmpty(eli))
@@ -204,7 +216,7 @@ ExpenseDList *popFrontExpenseDList(ExpenseDList *eli)
     printf("popBackExpenseDList::List is empty. Nothing to pop.\n");
     return newExpenseDList();
   }
-  
+
   // Check if the list contains only one element
   if (eli->begin == eli->end)
   {
@@ -235,7 +247,8 @@ ExpenseDList *popFrontExpenseDList(ExpenseDList *eli)
   return eli;
 }
 
-// Function to remove a specific expense from an expense dlist : see expense_dlist.h
+// Function to remove a specific expense from an expense dlist : see
+// expense_dlist.h
 ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense *exp)
 {
   if (isExpenseDListEmpty(eli))
@@ -243,7 +256,7 @@ ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense *exp)
     printf("popUserFromDList::List is empty, no user to pop");
     return newExpenseDList();
   }
-    
+
   ExpenseDListNode *temp = eli->begin;
 
   while (temp != NULL && &temp->nodeExpense != &exp)
@@ -266,11 +279,12 @@ ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense *exp)
     eli->begin->prev = NULL;
   }
   // If last in list
-  else if (temp->next == NULL) {
+  else if (temp->next == NULL)
+  {
     eli->end = temp->prev;
     eli->end->next = NULL;
-  }
-  else {
+  } else
+  {
     // Pointing previous node to the next and vice versa
     temp->prev->next = temp->next;
     temp->next->prev = temp->prev;
@@ -294,22 +308,24 @@ void printExpenseDList(ExpenseDList *eli)
     printf("printExpenseDlist::List is empty, nothing to print");
     return;
   }
-  
+
   ExpenseDListNode *temp = eli->begin;
-  
-  while (temp != NULL) {
-    printf("%s : %f\n", temp->nodeExpense->expenseName, temp->nodeExpense->expenseCost);
-    temp = temp->next;  
+
+  while (temp != NULL)
+  {
+    printf("%s : %f\n", temp->nodeExpense->expenseName,
+           temp->nodeExpense->expenseCost);
+    temp = temp->next;
   }
 }
 
 // Function to clear an expense dlist content : see expense_dlist.h
 ExpenseDList *clearExpenseDlist(ExpenseDList *eli)
 {
-  while(!isExpenseDListEmpty(eli))
+  while (!isExpenseDListEmpty(eli))
   {
     eli = popBackExpenseDList(eli);
   }
-  
+
   return newExpenseDList();
 }

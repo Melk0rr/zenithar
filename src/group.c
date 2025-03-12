@@ -1,15 +1,17 @@
-#include "group.h"
-#include "expense_dlist.h"
-#include "user.h"
-#include "utils.h"
-#include "user_dlist.h"
+// INFO: User group manipulations
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// #########################################################
-// Group creation / initialization
+#include "expense_dlist.h"
+#include "group.h"
+#include "user.h"
+#include "user_dlist.h"
+#include "utils.h"
+
+// ************************************************************
+// INFO: Group creation / initialization
 
 // Creates a new group : see group.h
 group *createGroup(const signed char *grpName)
@@ -20,11 +22,12 @@ group *createGroup(const signed char *grpName)
     fprintf(stderr, "createGroup::Memory allocation failed !");
     exit(1);
   }
-  
+
   // Change group name
-  strncpy((char *)&newGroup->groupName, (char *)grpName, sizeof(newGroup->groupName) - 1);
+  strncpy((char *)&newGroup->groupName, (char *)grpName,
+          sizeof(newGroup->groupName) - 1);
   newGroup->groupName[sizeof(newGroup->groupName) - 1] = '\0';
-  
+
   newGroup->members = newUserDList();
 
   return newGroup;
@@ -64,19 +67,13 @@ void removeGroupMember(group *grp, user *member)
 }
 
 // Clears group members : see group.h
-void clearGroupMembers(group *grp)
-{
-  clearUserDlist(grp->members);
-}
+void clearGroupMembers(group *grp) { clearUserDlist(grp->members); }
 
 // Prints the group member name : see group.h
-void printMemberNames(group *grp)
-{
-  printUserNames(grp->members);
-}
+void printMemberNames(group *grp) { printUserNames(grp->members); }
 
-// #########################################################
-// Group expenses
+// ************************************************************
+// INFO: Group expenses
 
 // Sums the groups expenses : see group.h
 float sumGroupExpenses(group *grp)
@@ -85,14 +82,16 @@ float sumGroupExpenses(group *grp)
 
   if (isUserDListEmpty(grp->members))
   {
-    fprintf(stderr, "sumGroupExpenses::Member list is empty, no expense sum to compute\n");
+    fprintf(
+        stderr,
+        "sumGroupExpenses::Member list is empty, no expense sum to compute\n");
     exit(1);
   }
 
   UserDListNode *temp = grp->members->begin;
 
   printExpenseDList(&temp->nodeUser->expenseList);
-  
+
   while (temp != NULL)
   {
     grpExpSum += getUserExpenseSum(temp->nodeUser);
@@ -104,10 +103,11 @@ float sumGroupExpenses(group *grp)
 }
 
 // Returns the share value based on current group expenses : see group.h
-float getShare(group *grp) {
+float getShare(group *grp)
+{
   float sumOfGrpExpenses = sumGroupExpenses(grp);
   float share = 0;
-  
+
   if (isUserDListEmpty(grp->members))
   {
     fprintf(stderr, "getShare::Member list is empty, no share to compute\n");
@@ -133,10 +133,11 @@ void getGroupBalance(group *grp)
     char buffer[50];
     if (memberDue >= 0)
     {
-		  sprintf(buffer, "%s | +%f", (char *)temp->nodeUser->userName, memberDue);
+      sprintf(buffer, "%s | +%f", (char *)temp->nodeUser->userName, memberDue);
       printGreen(buffer);
 
-    } else {
+    } else
+    {
       sprintf(buffer, "%f | %s", memberDue, temp->nodeUser->userName);
       printRed(buffer);
     }
@@ -156,8 +157,8 @@ void resetGroupExpenses(group *grp)
   }
 }
 
-// #########################################################
-// Group utility
+// ************************************************************
+// INFO: Group utility
 
 // Retreive a group member by name : see group.h
 user *getMemberByName(group *grp, const signed char *userName)
@@ -169,9 +170,10 @@ user *getMemberByName(group *grp, const signed char *userName)
     {
       return temp->nodeUser;
     }
-    
+
     temp = temp->next;
   }
 
   return NULL;
 }
+

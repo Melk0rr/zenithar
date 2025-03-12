@@ -1,7 +1,9 @@
-#include "utils.h"
+// INFO: Utility functions
 
 #include <stdio.h>
 #include <string.h>
+
+#include "utils.h"
 
 // Define ANSI escape codes for colors
 #define RESET       "\x1b[0m"
@@ -14,6 +16,9 @@
 #define CYAN        "\x1b[36m"
 #define WHITE       "\x1b[37m"
 #define BOLD        "\x1b[1m"
+
+// ************************************************************
+// INFO: Secure input utils
 
 // Generic part to get user input : see zenithar.h
 void getSecureInput(char *prompt, char *buffer, int bufferSize)
@@ -84,6 +89,23 @@ signed char *getSecureInputSignedChar(char *prompt, int bufferSize)
   }
 }
 
+// ************************************************************
+// INFO: Malloc utils
+
+// Function to check malloc : see utils.h
+void *xmalloc(size_t size)
+{
+  void *p = malloc(size);
+
+  if (p == NULL)
+    abort();
+
+  return p;
+}
+
+// ************************************************************
+// INFO: Color print utils
+
 // Prints text in a certain color : see zenithar.h
 void printInColor(const char *text, const char *color)
 {
@@ -119,3 +141,4 @@ void printBlue(const char *text)
 {
   printInColor(text, BLUE);
 }
+

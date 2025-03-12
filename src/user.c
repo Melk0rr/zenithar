@@ -1,12 +1,14 @@
-#include "user.h"
-#include "expense_dlist.h"
+// INFO: Users manipulations
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// #########################################################
-// User creation / initialization
+#include "expense_dlist.h"
+#include "user.h"
+
+// ************************************************************
+// INFO: User creation / initialization
 
 // Creates a new user : see user.h
 user *createUser(const signed char *usrName)
@@ -17,9 +19,10 @@ user *createUser(const signed char *usrName)
     fprintf(stderr, "createUser::Memory allocation failed !");
     exit(1);
   }
-  
+
   // Changes new user's name and asusring null-termination
-  strncpy((char *)&newUser->userName, (char *)usrName, sizeof(newUser->userName) - 1);
+  strncpy((char *)&newUser->userName, (char *)usrName,
+          sizeof(newUser->userName) - 1);
   newUser->userName[sizeof(newUser->userName) - 1] = '\0';
 
   newUser->expenseList = *newExpenseDList();
@@ -35,14 +38,11 @@ void addNewUserExpense(user *usr, const signed char *expName, float expCost)
   usr->expenseList = *pushBackExpenseDList(&usr->expenseList, newExp);
 }
 
-// #########################################################
-// User expenses
+// ************************************************************
+// INFO: User expenses
 
 // Sums the given user expenses : see user.h
-float getUserExpenseSum(user *usr)
-{
-  return usr->expenseList.sum;
-}
+float getUserExpenseSum(user *usr) { return usr->expenseList.sum; }
 
 // Resets given user expenses : see user.h
 void resetUserExpenses(user *usr)

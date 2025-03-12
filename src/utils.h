@@ -1,35 +1,25 @@
 #ifndef __UTILS__H__
 #define __UTILS__H__
 
-// #########################################################
-// Bool type definition
-
-/**
- * @brief Bool type struct
- * 
- */
-typedef enum
-{
-  false,
-  true
-} bool;
+#include <stdbool.h>
+#include <stdlib.h>
 
 // #########################################################
 // Prototypes
 
 /**
  * @brief Ask user for input
- * 
+ *
  * @param prompt {char *} : prompt string
  * @param buffer {char *} : buffer into which store user input
  * @param bufferSize {int} : size of the buffer
- * @return signed char 
+ * @return signed char
  */
 void getSecureInput(char *prompt, char *buffer, int bufferSize);
 
 /**
  * @brief Ask user specifically for an int
- * 
+ *
  * @param prompt {char *} : prompt string
  * @param bufferSize {int} : buffer size
  * @return int : input integer
@@ -38,7 +28,7 @@ int getSecureInputInt(char *prompt, int bufferSize);
 
 /**
  * @brief Ask user specifically for a signed char (string)
- * 
+ *
  * @param prompt {char *} : prompt string
  * @param bufferSize {int} : size of the buffer
  * @return signed char : input string
@@ -46,8 +36,17 @@ int getSecureInputInt(char *prompt, int bufferSize);
 signed char *getSecureInputSignedChar(char *prompt, int bufferSize);
 
 /**
+ * @brief Tries to allocate memory with given size and check if memory was
+ * allocated
+ *
+ * @param size {size_t} : size of memory to alloc
+ * @return void*
+ */
+void *xmalloc(size_t size);
+
+/**
  * @brief Prints text in specified color
- * 
+ *
  * @param text {const char *} : text to print
  * @param color {const char *} : color value
  */
@@ -55,35 +54,35 @@ void printInColor(const char *text, const char *color);
 
 /**
  * @brief Prints text in white
- * 
+ *
  * @param text {const char *} : text to print
  */
 void printWhite(const char *text);
 
 /**
  * @brief Prints text in red
- * 
+ *
  * @param text {const char *} : text to print
  */
 void printRed(const char *text);
 
 /**
  * @brief Prints text in green
- * 
+ *
  * @param text {const char *} : text to print
  */
 void printGreen(const char *text);
 
 /**
  * @brief Prints text in yellow
- * 
+ *
  * @param text {const char *} : text to print
  */
 void printYellow(const char *test);
 
 /**
  * @brief Prints text in blue
- * 
+ *
  * @param text {const char *} : text to print
  */
 void printBlue(const char *text);

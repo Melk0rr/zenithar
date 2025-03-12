@@ -1,30 +1,27 @@
-#include "group.h"
-#include "zenithar.h"
+// INFO: Entry point
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "group.h"
 
 int main(int argc, char const *argv[])
 {
-	signed char *groupName = getSecureInputSignedChar("Group name: ", 256);
-	group *testGroup = createGroup(groupName);
+  group *myGroup = createGroup((const signed char *)"My expense group");
+  user *user1 = createUser((const signed char *)"Jo");
+  user *user2 = createUser((const signed char *)"Lara");
+  user *user3 = createUser((const signed char *)"Alex");
+  user *user4 = createUser((const signed char *)"Louise");
 
-	int numberOfMembers = getSecureInputInt("How many users are in this group ? ", 4);
+  addGroupMember(myGroup, user1);
+  addGroupMember(myGroup, user2);
+  addGroupMember(myGroup, user3);
+  addGroupMember(myGroup, user4);
 
-	for (int i = 0; i < numberOfMembers; i++)
-	{
-		char buffer[50];
-		sprintf(buffer, "What is the name of user %d ? ", i + 1);
+  addNewUserExpense(user1, (const signed char *)"Peinture chambre", 53);
+  addNewUserExpense(user2, (const signed char *)"Courses Lundi", 89.4);
+  addNewUserExpense(user2, (const signed char *)"Vaccin Medor", 112.89);
+  addNewUserExpense(user4, (const signed char *)"Loyer", 754.22);
 
-		signed char *currentUsrName = getSecureInputSignedChar(buffer, 256);
-		user *currentUsr = createUser(currentUsrName);
-		
-		addGroupMember(testGroup, currentUsr);
-	}
-	
-	printf("%s : %d\n", testGroup->groupName, testGroup->memberCount);
+  // printExpenseDList(&user2->expenseList);
+  getGroupBalance(myGroup);
 
-	free(testGroup->members);
-	free(testGroup);
-	return 0;
+  return 0;
 }
