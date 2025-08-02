@@ -1,7 +1,5 @@
 // INFO: Users manipulations
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #include "expense_dlist.h"
