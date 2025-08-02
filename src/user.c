@@ -13,12 +13,8 @@
 // Creates a new user : see user.h
 user * createUser(char const * const usrName)
 {
-  user *newUser = (user *)malloc(sizeof(*newUser));
-  if (newUser == NULL)
-  {
-    fprintf(stderr, "createUser::Memory allocation failed !");
-    exit(1);
-  }
+  user * newUser = (user *)xmalloc(
+      sizeof(*newUser), "createUser::Failed to allocate memory for new user");
 
   // Changes new user's name and asusring null-termination
   strncpy((char *)&newUser->userName, usrName, sizeof(newUser->userName) - 1);
