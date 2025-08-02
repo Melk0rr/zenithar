@@ -7,7 +7,7 @@
 #include "expense.h"
 
 // Function to create an empty expense dlist : see expense_dlist.h
-ExpenseDList *newExpenseDList()
+ExpenseDList * newExpenseDList()
 {
   ExpenseDList *eli = malloc(sizeof(*eli));
 
@@ -37,9 +37,7 @@ bool isExpenseDListEmpty(ExpenseDList * const eli)
 int expenseDListLength(ExpenseDList * const eli)
 {
   if (isExpenseDListEmpty(eli))
-  {
     return 0;
-  }
 
   return eli->length;
 }
@@ -48,9 +46,7 @@ int expenseDListLength(ExpenseDList * const eli)
 expense * getFirstExpenseDListNode(ExpenseDList * const eli)
 {
   if (isExpenseDListEmpty(eli))
-  {
     exit(1);
-  }
 
   return eli->begin->nodeExpense;
 }
@@ -59,9 +55,7 @@ expense * getFirstExpenseDListNode(ExpenseDList * const eli)
 expense * getLastExpenseDListNode(ExpenseDList * const eli)
 {
   if (isExpenseDListEmpty(eli))
-  {
     exit(1);
-  }
 
   return eli->end->nodeExpense;
 }
@@ -98,11 +92,11 @@ ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli,
     // If dlist is empty : new node is the first and last element
     eli->begin = expNode;
     eli->end = expNode;
-
-  } else
+  }
+  else
   {
-    // If dlist is not empty : Last dlist element next pointer now points to new
-    // node
+    // If dlist is not empty : Last dlist element next pointer now points to
+    // new node
     eli->end->next = expNode;
 
     // New node prev pointer now points to the previous last dlist element
@@ -122,7 +116,7 @@ ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli,
 // expense_dlist.h
 ExpenseDList * pushFrontExpenseDList(ExpenseDList * eli, expense * exp)
 {
-  ExpenseDListNode *expNode = malloc(sizeof(*expNode));
+  ExpenseDListNode * expNode = malloc(sizeof(*expNode));
 
   if (expNode == NULL)
   {
@@ -149,11 +143,11 @@ ExpenseDList * pushFrontExpenseDList(ExpenseDList * eli, expense * exp)
     // If dlist is empty : new node is the first and last element
     eli->begin = expNode;
     eli->end = expNode;
-
-  } else
+  }
+  else
   {
-    // If dlist is not empty : Last dlist element next pointer now points to new
-    // node
+    // If dlist is not empty : Last dlist element next pointer now points to
+    // new node
     eli->begin->prev = expNode;
 
     // New node prev pointer now points to the previous last dlist element
@@ -187,7 +181,7 @@ ExpenseDList * popBackExpenseDList(ExpenseDList * eli)
     return newExpenseDList();
   }
   // Saves the last element
-  ExpenseDListNode *tmp = eli->end;
+  ExpenseDListNode * tmp = eli->end;
 
   // Last node is now the second to last
   eli->end = eli->end->prev;
@@ -227,7 +221,7 @@ ExpenseDList * popFrontExpenseDList(ExpenseDList * eli)
     return newExpenseDList();
   }
   // Saves the first element
-  ExpenseDListNode *tmp = eli->begin;
+  ExpenseDListNode * tmp = eli->begin;
 
   // First node is now the second to first
   eli->begin = eli->begin->next;
@@ -258,7 +252,7 @@ ExpenseDList * popExpenseFromDList(ExpenseDList * eli, expense * exp)
     return newExpenseDList();
   }
 
-  ExpenseDListNode *temp = eli->begin;
+  ExpenseDListNode * temp = eli->begin;
 
   while (temp != NULL && &temp->nodeExpense != &exp)
   {
@@ -284,7 +278,8 @@ ExpenseDList * popExpenseFromDList(ExpenseDList * eli, expense * exp)
   {
     eli->end = temp->prev;
     eli->end->next = NULL;
-  } else
+  }
+  else
   {
     // Pointing previous node to the next and vice versa
     temp->prev->next = temp->next;
@@ -310,7 +305,7 @@ void printExpenseDList(ExpenseDList * eli)
     return;
   }
 
-  ExpenseDListNode *temp = eli->begin;
+  ExpenseDListNode * temp = eli->begin;
 
   while (temp != NULL)
   {
