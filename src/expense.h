@@ -16,12 +16,12 @@ typedef struct expense
 
 /**
  * @brief Create a Expense struct
- * 
+ *
  * @param expName {signed char} name of the new expense
  * @param cost {int} cost of the expense
- * @return struct expense* 
+ * @return struct expense*
  */
-expense *createExpense(const signed char *expName, float cost);
+expense * createExpense(char const * const expName, float const cost);
 
 // #########################################################
 // Prototypes

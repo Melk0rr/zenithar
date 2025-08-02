@@ -9,7 +9,7 @@
 // ************************************************************
 // Expense creation / initialization
 
-expense *createExpense(const signed char *expName, float cost)
+expense * createExpense(char const * const expName, float const cost)
 {
   // Allocate memory
   expense *newExpense = (expense *)malloc(sizeof(*newExpense));
