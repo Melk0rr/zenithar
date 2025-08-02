@@ -11,7 +11,6 @@
 // INFO: User creation / initialization
 
 // Creates a new user : see user.h
-user *createUser(const signed char *usrName)
 {
   user *newUser = (user *)malloc(sizeof(*newUser));
   if (newUser == NULL)
@@ -31,7 +30,6 @@ user *createUser(const signed char *usrName)
 }
 
 // Adds an expense to user expense dlist : see user.h
-void addNewUserExpense(user *usr, const signed char *expName, float expCost)
 {
   // Add new expense
   expense *newExp = createExpense(expName, expCost);

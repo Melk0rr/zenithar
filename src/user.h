@@ -25,33 +25,33 @@ typedef struct user
 
 /**
  * @brief Creates a new user
- * 
+ *
  * @param usrName {const signed char} : new user's name
  * @return user* : new user
  */
-user *createUser(const signed char *usrName);
+user * createUser(char const * const usrName);
 
 /**
  * @brief Adds a new expense for the given user
- * 
+ *
  * @param usr {user} : user to whom add the new expense
  * @param exp {expense} : new expense to add
  */
-void addNewUserExpense(user *usr, const signed char *expName, float expCost);
+void addNewUserExpense(user * const usr, char const * const expName, float const expCost);
 
 /**
  * @brief Returns the given user expense sum
- * 
+ *
  * @param usr {user} : target user
  * @return float : sum of the expenses
  */
-float getUserExpenseSum(user *usr);
+float getUserExpenseSum(user * const usr);
 
 /**
  * @brief Resets expenses for the given user
- * 
+ *
  * @param usr {user} : the user whom expenses will be reset
  */
-void resetUserExpenses(user *usr);
+void resetUserExpenses(user * const usr);
 
 #endif
