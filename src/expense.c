@@ -1,10 +1,9 @@
 // INFO: User expenses manipulations
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #include "expense.h"
+#include "utils.h"
 
 // ************************************************************
 // Expense creation / initialization
