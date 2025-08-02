@@ -1,5 +1,6 @@
 # INFO: Clang format customization
 
+ColumnLimit: 79
 BreakBeforeBraces: Custom
 PointerAlignment: Middle
 QualifierAlignment: Right
