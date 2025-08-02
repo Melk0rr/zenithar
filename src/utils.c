@@ -93,12 +93,15 @@ signed char *getSecureInputSignedChar(char *prompt, size_t bufferSize)
 // INFO: Malloc utils
 
 // Function to check malloc : see utils.h
-void *xmalloc(size_t size)
+void *xmalloc(size_t size, char const * const err)
 {
   void *p = malloc(size);
 
   if (p == NULL)
-    abort();
+  {
+    fprintf(stderr, "%s", err);
+    return EXIT_FAILURE;
+  }
 
   return p;
 }

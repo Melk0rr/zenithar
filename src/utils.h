@@ -42,7 +42,7 @@ signed char *getSecureInputSignedChar(char *prompt, size_t bufferSize);
  * @param size {size_t} : size of memory to alloc
  * @return void*
  */
-void *xmalloc(size_t size);
+void *xmalloc(size_t const size, char const * const err);
 
 /**
  * @brief Prints text in specified color
