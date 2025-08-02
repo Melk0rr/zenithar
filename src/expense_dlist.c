@@ -72,6 +72,8 @@ ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli,
 
   if (isExpenseDListEmpty(eli))
   {
+    // TODO: check this part : maybe no need to allocate mem again
+    eli = xmalloc(sizeof(*eli), "pushBackExpenseDList::Memory allocation failed for empty ExpenseList !");
 
     // If dlist is empty : new node is the first and last element
     eli->begin = expNode;
