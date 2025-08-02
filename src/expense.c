@@ -12,13 +12,9 @@
 expense * createExpense(char const * const expName, float const cost)
 {
   // Allocate memory
-  expense *newExpense = (expense *)malloc(sizeof(*newExpense));
-
-  if (newExpense == NULL)
-  {
-    fprintf(stderr, "createExpense::Memory allocation failed !");
-    exit(1);
-  }
+  expense * newExpense = (expense *)xmalloc(
+      sizeof(*newExpense),
+      "createExpense::Failed to allocate memory for new expense");
 
   // Change expense name and ensure null-termination
   strncpy((char *)newExpense->expenseName, (char *)expName,
