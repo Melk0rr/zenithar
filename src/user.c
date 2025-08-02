@@ -11,6 +11,7 @@
 // INFO: User creation / initialization
 
 // Creates a new user : see user.h
+user * createUser(char const * const usrName)
 {
   user *newUser = (user *)malloc(sizeof(*newUser));
   if (newUser == NULL)
