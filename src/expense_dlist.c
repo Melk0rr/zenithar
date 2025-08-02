@@ -25,12 +25,7 @@ ExpenseDList * newExpenseDList()
 // Function check if an expense dlist is empty : see expense_dlist.h
 bool isExpenseDListEmpty(ExpenseDList * const eli)
 {
-  if (eli == NULL || eli->end == NULL)
-  {
-    return true;
-  }
-
-  return false;
+  return (eli == NULL || eli->end == NULL);
 }
 
 // Function to return expense dlist length : see expense_dlist.h
