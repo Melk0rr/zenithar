@@ -9,12 +9,12 @@
 
 /**
  * @brief A user that makes expenses
- * 
+ *
  */
 typedef struct user
 {
   // Name of the user
-  signed char userName[25];
+  char userName[25];
 
   // List of the user expenses
   ExpenseDList expenseList;
