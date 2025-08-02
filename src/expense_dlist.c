@@ -23,7 +23,7 @@ ExpenseDList *newExpenseDList()
 }
 
 // Function check if an expense dlist is empty : see expense_dlist.h
-bool isExpenseDListEmpty(ExpenseDList *eli)
+bool isExpenseDListEmpty(ExpenseDList * const eli)
 {
   if (eli == NULL || eli->end == NULL)
   {
@@ -34,7 +34,7 @@ bool isExpenseDListEmpty(ExpenseDList *eli)
 }
 
 // Function to return expense dlist length : see expense_dlist.h
-int expenseDListLength(ExpenseDList *eli)
+int expenseDListLength(ExpenseDList * const eli)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -45,7 +45,7 @@ int expenseDListLength(ExpenseDList *eli)
 }
 
 // Function to retreive first element of expense dlist : see expense_dlist.h
-expense *getFirstExpenseDListNode(ExpenseDList *eli)
+expense * getFirstExpenseDListNode(ExpenseDList * const eli)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -56,7 +56,7 @@ expense *getFirstExpenseDListNode(ExpenseDList *eli)
 }
 
 // Function to retreive the last element of expense dlist : see expense_dlist.h
-expense *getLastExpenseDListNode(ExpenseDList *eli)
+expense * getLastExpenseDListNode(ExpenseDList * const eli)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -68,7 +68,8 @@ expense *getLastExpenseDListNode(ExpenseDList *eli)
 
 // Function to push a new expense at the end of an expense dlist : see
 // expense_dlist.h
-ExpenseDList *pushBackExpenseDList(ExpenseDList *eli, expense *exp)
+ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli,
+                                    expense * const exp)
 {
   ExpenseDListNode *expNode = malloc(sizeof(*expNode));
 
@@ -119,7 +120,7 @@ ExpenseDList *pushBackExpenseDList(ExpenseDList *eli, expense *exp)
 
 // Function to push a new expense at the beginning of an expense dlist : see
 // expense_dlist.h
-ExpenseDList *pushFrontExpenseDList(ExpenseDList *eli, expense *exp)
+ExpenseDList * pushFrontExpenseDList(ExpenseDList * eli, expense * exp)
 {
   ExpenseDListNode *expNode = malloc(sizeof(*expNode));
 
@@ -169,7 +170,7 @@ ExpenseDList *pushFrontExpenseDList(ExpenseDList *eli, expense *exp)
 }
 
 // Function to pop an expense node from given list end : see expense_dlist.h
-ExpenseDList *popBackExpenseDList(ExpenseDList *eli)
+ExpenseDList * popBackExpenseDList(ExpenseDList * eli)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -209,7 +210,7 @@ ExpenseDList *popBackExpenseDList(ExpenseDList *eli)
 
 // Function to pop an expense node from given list beginning : see
 // expense_dlist.h
-ExpenseDList *popFrontExpenseDList(ExpenseDList *eli)
+ExpenseDList * popFrontExpenseDList(ExpenseDList * eli)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -249,7 +250,7 @@ ExpenseDList *popFrontExpenseDList(ExpenseDList *eli)
 
 // Function to remove a specific expense from an expense dlist : see
 // expense_dlist.h
-ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense *exp)
+ExpenseDList * popExpenseFromDList(ExpenseDList * eli, expense * exp)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -301,7 +302,7 @@ ExpenseDList *popExpenseFromDList(ExpenseDList *eli, expense *exp)
 }
 
 // Function to print the content of an expense dlist : see expense_dlist.h
-void printExpenseDList(ExpenseDList *eli)
+void printExpenseDList(ExpenseDList * eli)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -320,7 +321,7 @@ void printExpenseDList(ExpenseDList *eli)
 }
 
 // Function to clear an expense dlist content : see expense_dlist.h
-ExpenseDList *clearExpenseDlist(ExpenseDList *eli)
+ExpenseDList * clearExpenseDlist(ExpenseDList * eli)
 {
   while (!isExpenseDListEmpty(eli))
   {
