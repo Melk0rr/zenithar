@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 // Function to create an empty user dlist : see user_dlist.h
-UserDList *newUserDList()
+UserDList * const newUserDList()
 {
   UserDList * newList =
       xmalloc(sizeof(*newList),
@@ -23,7 +23,7 @@ UserDList *newUserDList()
 }
 
 // Function check if a User dlist is empty : see user_dlist.h
-bool isUserDListEmpty(UserDList *uli)
+bool isUserDListEmpty(UserDList * uli)
 {
   if (uli == NULL || uli->end == NULL)
   {
@@ -34,7 +34,7 @@ bool isUserDListEmpty(UserDList *uli)
 }
 
 // Function to return user dlist length : see user_dlist.h
-int userDListLength(UserDList *uli)
+int userDListLength(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -45,7 +45,7 @@ int userDListLength(UserDList *uli)
 }
 
 // Function to retreive first element of user dlist : see user_dlist.h
-user *getFirstUserDListNode(UserDList *uli)
+user * getFirstUserDListNode(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -56,7 +56,7 @@ user *getFirstUserDListNode(UserDList *uli)
 }
 
 // Function to retreive the last element of user dlist : see user_dlist.h
-user *getLastUserDListNode(UserDList *uli)
+user * getLastUserDListNode(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -67,9 +67,9 @@ user *getLastUserDListNode(UserDList *uli)
 }
 
 // Function to push a new user at the end of an user dlist : see user_dlist.h
-UserDList *pushBackUserDList(UserDList *uli, user *usr)
+UserDList * pushBackUserDList(UserDList * uli, user * usr)
 {
-  UserDListNode *usrNode = malloc(sizeof(*usrNode));
+  UserDListNode * usrNode = malloc(sizeof(*usrNode));
 
   if (usrNode == NULL)
   {
@@ -98,11 +98,11 @@ UserDList *pushBackUserDList(UserDList *uli, user *usr)
     // If dlist is empty : new node is the first and last element
     uli->begin = usrNode;
     uli->end = usrNode;
-
-  } else
+  }
+  else
   {
-    // If dlist is not empty : Last dlist element next pointer now points to new
-    // node
+    // If dlist is not empty : Last dlist element next pointer now points to
+    // new node
     uli->end->next = usrNode;
 
     // New node prev pointer now points to the previous last dlist element
@@ -118,15 +118,14 @@ UserDList *pushBackUserDList(UserDList *uli, user *usr)
 
 // Function to push a new user at the beginning of an user dlist : see
 // user_dlist.h
-UserDList *pushFrontUserDList(UserDList *uli, user *usr)
+UserDList * pushFrontUserDList(UserDList * uli, user * usr)
 {
-  UserDListNode *usrNode = (UserDListNode *)malloc(sizeof(*usrNode));
+  UserDListNode * usrNode = (UserDListNode *)malloc(sizeof(*usrNode));
 
   if (usrNode == NULL)
   {
-    fprintf(
-        stderr,
-        "pushFrontUserDList::Memory allocation failed for new UserDListNode !");
+    fprintf(stderr, "pushFrontUserDList::Memory allocation failed for new "
+                    "UserDListNode !");
     exit(1);
   }
 
@@ -149,11 +148,11 @@ UserDList *pushFrontUserDList(UserDList *uli, user *usr)
     // If dlist is empty : new node is the first and last element
     uli->begin = usrNode;
     uli->end = usrNode;
-
-  } else
+  }
+  else
   {
-    // If dlist is not empty : Last dlist element next pointer now points to new
-    // node
+    // If dlist is not empty : Last dlist element next pointer now points to
+    // new node
     uli->begin->prev = usrNode;
 
     // New node prev pointer now points to the previous last dlist element
@@ -168,7 +167,7 @@ UserDList *pushFrontUserDList(UserDList *uli, user *usr)
 }
 
 // Function to pop an user node from given list end : see user_dlist.h
-UserDList *popBackUserDList(UserDList *uli)
+UserDList * popBackUserDList(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -185,7 +184,7 @@ UserDList *popBackUserDList(UserDList *uli)
     return newUserDList();
   }
   // Saves the last element
-  UserDListNode *tmp = uli->end;
+  UserDListNode * tmp = uli->end;
 
   // Last node is now the second to last
   uli->end = uli->end->prev;
@@ -206,7 +205,7 @@ UserDList *popBackUserDList(UserDList *uli)
 }
 
 // Function to pop a user node from given list beginning : see user_dlist.h
-UserDList *popFrontUserDList(UserDList *uli)
+UserDList * popFrontUserDList(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -223,7 +222,7 @@ UserDList *popFrontUserDList(UserDList *uli)
     return newUserDList();
   }
   // Saves the first element
-  UserDListNode *tmp = uli->begin;
+  UserDListNode * tmp = uli->begin;
 
   // First node is now the second to first
   uli->begin = uli->begin->next;
@@ -244,7 +243,7 @@ UserDList *popFrontUserDList(UserDList *uli)
 }
 
 // Function to remove a specific user from a user dlist : see user_dlist.h
-UserDList *popUserFromDList(UserDList *uli, user *usr)
+UserDList * popUserFromDList(UserDList * uli, user * usr)
 {
   if (isUserDListEmpty(uli))
   {
@@ -252,7 +251,7 @@ UserDList *popUserFromDList(UserDList *uli, user *usr)
     return newUserDList();
   }
 
-  UserDListNode *temp = uli->begin;
+  UserDListNode * temp = uli->begin;
 
   while (temp != NULL && &temp->nodeUser != &usr)
   {
@@ -284,7 +283,8 @@ UserDList *popUserFromDList(UserDList *uli, user *usr)
   {
     uli->end = temp->prev;
     uli->end->next = NULL;
-  } else
+  }
+  else
   {
     // Pointing previous node to the next and vice versa
     temp->prev->next = temp->next;
@@ -302,36 +302,35 @@ UserDList *popUserFromDList(UserDList *uli, user *usr)
 }
 
 // Function to find a user in a user dlist : see user_dlist.h
-UserDListNode *findUserNodeByName(UserDList *uli, const signed char usrName)
+UserDListNode * findUserNodeByName(UserDList * const uli,
+                                   char const * const usrName)
 {
-  UserDListNode *temp = (UserDListNode *)malloc(sizeof(*temp));
+  UserDListNode * temp = (UserDListNode *)xmalloc(
+      sizeof(*temp),
+      "findUserNodeByName::Failed to allocate memory for temporary user node");
 
   if (!isUserDListEmpty(uli))
   {
     temp = uli->begin;
 
-    while (temp != NULL && *temp->nodeUser->userName != usrName)
-    {
+    while (temp != NULL && temp->nodeUser->userName != usrName)
       temp = temp->next;
-    }
   }
 
   return temp;
 }
 
 // Function to clear a user dlist content : see user_dlist.h
-UserDList *clearUserDlist(UserDList *uli)
+UserDList * clearUserDlist(UserDList * uli)
 {
   while (!isUserDListEmpty(uli))
-  {
     uli = popBackUserDList(uli);
-  }
 
   return newUserDList();
 }
 
 // Function to print the content of an user dlist : see user_dlist.h
-void printUserDList(UserDList *uli)
+void printUserDList(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -339,8 +338,7 @@ void printUserDList(UserDList *uli)
     return;
   }
 
-  UserDListNode *temp = uli->begin;
-
+  UserDListNode * temp = uli->begin;
   while (temp->next != NULL)
   {
     printf("%s : %f\n", temp->nodeUser->userName,
@@ -350,7 +348,7 @@ void printUserDList(UserDList *uli)
 }
 
 // Function to print the names of the users in a user dlist : see user_dlist.h
-void printUserNames(UserDList *uli)
+void printUserNames(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -358,12 +356,10 @@ void printUserNames(UserDList *uli)
     return;
   }
 
-  UserDListNode *temp = uli->begin;
-
+  UserDListNode * temp = uli->begin;
   while (temp != NULL)
   {
     printf("%s\n", temp->nodeUser->userName);
     temp = temp->next;
   }
 }
-
