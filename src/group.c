@@ -16,12 +16,9 @@
 // Creates a new group : see group.h
 group * createGroup(char const * const grpName)
 {
-  group *newGroup = malloc(sizeof(*newGroup));
-  if (newGroup == NULL)
-  {
-    fprintf(stderr, "createGroup::Memory allocation failed !");
-    exit(1);
-  }
+  group * const newGroup =
+      xmalloc(sizeof(*newGroup),
+              "createGroup::Failed to allocate memory for new group!");
 
   // Change group name
   strncpy((char *)&newGroup->groupName, grpName,
