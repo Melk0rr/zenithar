@@ -23,8 +23,8 @@ group * createGroup(char const * const grpName)
   // Change group name
   strncpy((char *)&newGroup->groupName, grpName,
           sizeof(newGroup->groupName) - 1);
-  newGroup->groupName[sizeof(newGroup->groupName) - 1] = '\0';
 
+  newGroup->groupName[sizeof(newGroup->groupName) - 1] = '\0';
   newGroup->members = newUserDList();
 
   return newGroup;
@@ -38,10 +38,8 @@ void initGroupMembers(group * const grp, user * const members,
   grp->members = newUserDList();
 
   // Copying new members into the group member list
-  for (int i = 0; i < numberOfMembers; i++)
-  {
+  for (size_t i = 0; i < numberOfMembers; i++)
     addGroupMember(grp, &members[i]);
-  }
 }
 
 // Adds a new group into the given group : see group.h
@@ -86,7 +84,7 @@ static float sumGroupExpenses(group * const grp)
     exit(1);
   }
 
-  UserDListNode *temp = grp->members->begin;
+  UserDListNode * temp = grp->members->begin;
 
   printExpenseDList(&temp->nodeUser->expenseList);
 
@@ -119,11 +117,11 @@ static float getShare(group * grp)
 }
 
 // Print group balance : see group.h
-void getGroupBalance(group *grp)
+void getGroupBalance(group * grp)
 {
   float share = getShare(grp);
 
-  UserDListNode *temp = grp->members->begin;
+  UserDListNode * temp = grp->members->begin;
   while (temp != NULL)
   {
     float memberDue = getUserExpenseSum(temp->nodeUser) - share;
@@ -133,8 +131,8 @@ void getGroupBalance(group *grp)
     {
       sprintf(buffer, "%s | +%f", (char *)temp->nodeUser->userName, memberDue);
       printGreen(buffer);
-
-    } else
+    }
+    else
     {
       sprintf(buffer, "%f | %s", memberDue, temp->nodeUser->userName);
       printRed(buffer);
@@ -145,9 +143,9 @@ void getGroupBalance(group *grp)
 }
 
 // Resets group expenses
-void resetGroupExpenses(group *grp)
+void resetGroupExpenses(group * grp)
 {
-  UserDListNode *temp = grp->members->begin;
+  UserDListNode * temp = grp->members->begin;
   while (temp->next != NULL)
   {
     resetUserExpenses(temp->nodeUser);
@@ -161,17 +159,14 @@ void resetGroupExpenses(group *grp)
 // Retreive a group member by name : see group.h
 static user * getMemberByName(group * const grp, char const * const userName)
 {
-  UserDListNode *temp = grp->members->begin;
+  UserDListNode * temp = grp->members->begin;
   while (temp->next != NULL)
   {
     if (temp->nodeUser->userName == userName)
-    {
       return temp->nodeUser;
-    }
 
     temp = temp->next;
   }
 
   return NULL;
 }
-
