@@ -31,7 +31,8 @@ group * createGroup(char const * const grpName)
 }
 
 // Initializes group members : see group.h
-void initGroupMembers(group *grp, user *members, int numberOfMembers)
+void initGroupMembers(group * const grp, user * const members,
+                      size_t const numberOfMembers)
 {
   // Clearing members
   grp->members = newUserDList();
@@ -44,13 +45,13 @@ void initGroupMembers(group *grp, user *members, int numberOfMembers)
 }
 
 // Adds a new group into the given group : see group.h
-void addGroupMember(group *grp, user *newMember)
+void addGroupMember(group * const grp, user * const newMember)
 {
   grp->members = pushBackUserDList(grp->members, newMember);
 }
 
 // Creates a new user and add it to the list of members : see group.h
-void addNewGroupMember(group *grp, const signed char *userName)
+void addNewGroupMember(group * const grp, char const * const userName)
 {
   // Adding the new user at the end of the member list
   user newMember = *createUser(userName);
@@ -58,16 +59,16 @@ void addNewGroupMember(group *grp, const signed char *userName)
 }
 
 // Removes the given user from members of the provided group : see group.h
-void removeGroupMember(group *grp, user *member)
+void removeGroupMember(group * const grp, user * const member)
 {
   popUserFromDList(grp->members, member);
 }
 
 // Clears group members : see group.h
-void clearGroupMembers(group *grp) { clearUserDlist(grp->members); }
+void clearGroupMembers(group * const grp) { clearUserDlist(grp->members); }
 
 // Prints the group member name : see group.h
-void printMemberNames(group *grp) { printUserNames(grp->members); }
+void printMemberNames(group * const grp) { printUserNames(grp->members); }
 
 // ************************************************************
 // INFO: Group expenses
