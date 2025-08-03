@@ -8,7 +8,9 @@
 // Function to create an empty user dlist : see user_dlist.h
 UserDList *newUserDList()
 {
-  UserDList *newList = malloc(sizeof(*newList));
+  UserDList * newList =
+      xmalloc(sizeof(*newList),
+              "newUserDList::Failed to allocate memory for new user dlist");
 
   if (newList != NULL)
   {
