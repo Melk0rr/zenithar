@@ -3,6 +3,7 @@
 
 #include "user.h"
 #include "user_dlist.h"
+#include <stddef.h>
 
 // #########################################################
 // Group struct definition
