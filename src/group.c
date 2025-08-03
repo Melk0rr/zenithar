@@ -14,7 +14,7 @@
 // INFO: Group creation / initialization
 
 // Creates a new group : see group.h
-group *createGroup(const signed char *grpName)
+group * createGroup(char const * const grpName)
 {
   group *newGroup = malloc(sizeof(*newGroup));
   if (newGroup == NULL)
@@ -24,7 +24,7 @@ group *createGroup(const signed char *grpName)
   }
 
   // Change group name
-  strncpy((char *)&newGroup->groupName, (char *)grpName,
+  strncpy((char *)&newGroup->groupName, grpName,
           sizeof(newGroup->groupName) - 1);
   newGroup->groupName[sizeof(newGroup->groupName) - 1] = '\0';
 
