@@ -78,14 +78,6 @@ void clearGroupMembers(group * const grp);
  * 
  * @param grp {group} : group to print member of
  */
-
-/**
- * @brief Sums the group expenses
- * 
- * @param grp {group} : target group
- * @return int : sum of the group expenses
- */
-float sumGroupExpenses(group *grp);
 void printMemberNames(group * const grp);
 
 /**
@@ -100,15 +92,6 @@ void getGroupBalance(group * const grp);
  * 
  * @param grp {group} : target group
  */
-
-/**
- * @brief Retreives a group member by name
- * 
- * @param grp {group} : the group the user is member of
- * @param userName {const signed char *} : user name
- * @return user* : the member or NULL
- */
-user *getMemberByName(group *grp, const signed char *userName);
 void resetGroupExpenses(group * const grp);
 
 #endif

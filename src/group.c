@@ -76,7 +76,7 @@ void printMemberNames(group *grp) { printUserNames(grp->members); }
 // INFO: Group expenses
 
 // Sums the groups expenses : see group.h
-float sumGroupExpenses(group *grp)
+static float sumGroupExpenses(group * const grp)
 {
   float grpExpSum = 0;
 
@@ -103,7 +103,7 @@ float sumGroupExpenses(group *grp)
 }
 
 // Returns the share value based on current group expenses : see group.h
-float getShare(group *grp)
+static float getShare(group * grp)
 {
   float sumOfGrpExpenses = sumGroupExpenses(grp);
   float share = 0;
@@ -161,7 +161,7 @@ void resetGroupExpenses(group *grp)
 // INFO: Group utility
 
 // Retreive a group member by name : see group.h
-user *getMemberByName(group *grp, const signed char *userName)
+static user * getMemberByName(group * const grp, char const * const userName)
 {
   UserDListNode *temp = grp->members->begin;
   while (temp->next != NULL)
