@@ -37,7 +37,7 @@ typedef struct UserDList
  *
  * @return UserDList : new empty list
  */
-UserDList *newUserDList(void);
+UserDList * const newUserDList(void);
 
 /**
  * @brief Checks if a user dlist is empty
@@ -46,7 +46,7 @@ UserDList *newUserDList(void);
  * @return true : the dlist is empty
  * @return false : the dlist is not empty
  */
-bool isUserDListEmpty(UserDList *uli);
+bool isUserDListEmpty(UserDList * const uli);
 
 /**
  * @brief Returns the current length of the user dlist
@@ -54,7 +54,7 @@ bool isUserDListEmpty(UserDList *uli);
  * @param uli {UserDList} : targeted dlist
  * @return int : length of the targeted length
  */
-int userDListLength(UserDList *uli);
+int userDListLength(UserDList * const uli);
 
 /**
  * @brief Get the first user dlist node object
@@ -62,7 +62,7 @@ int userDListLength(UserDList *uli);
  * @param uli {UserDList} : list from which retreive first node
  * @return user : first user
  */
-user *getFirstUserDListNode(UserDList *uli);
+user * getFirstUserDListNode(UserDList * const uli);
 
 /**
  * @brief Get the last user dist node object
@@ -70,7 +70,7 @@ user *getFirstUserDListNode(UserDList *uli);
  * @param eli {UserDList} : list from which retreive first node
  * @return user : last user
  */
-user *getLastUserDListNode(UserDList *uli);
+user * getLastUserDListNode(UserDList * const uli);
 
 /**
  * @brief Pushes a user node at the end of the given user dlist
@@ -79,7 +79,7 @@ user *getLastUserDListNode(UserDList *uli);
  * @param usr {user} : user to push
  * @return UserDList
  */
-UserDList *pushBackUserDList(UserDList *uli, user *usr);
+UserDList * pushBackUserDList(UserDList * const uli, user * const usr);
 
 /**
  * @brief Pushes a user node at the beginning of the given user dlist
@@ -88,7 +88,7 @@ UserDList *pushBackUserDList(UserDList *uli, user *usr);
  * @param usr {user} : user to push
  * @return UserDList
  */
-UserDList *pushFrontUserDList(UserDList *uli, user *usr);
+UserDList * pushFrontUserDList(UserDList * const uli, user * const usr);
 
 /**
  * @brief Pops an user node from the end of the given user dlist
@@ -96,7 +96,7 @@ UserDList *pushFrontUserDList(UserDList *uli, user *usr);
  * @param uli {UserDList} : user dlist from which a node will be poped
  * @return UserDList
  */
-UserDList *popBackUserDList(UserDList *uli);
+UserDList * popBackUserDList(UserDList * const uli);
 
 /**
  * @brief Pops an user node from the beginning of the given user dlist
@@ -104,7 +104,7 @@ UserDList *popBackUserDList(UserDList *uli);
  * @param uli {UserDList} : user dlist from which a node will be poped
  * @return UserDList
  */
-UserDList *popFrontUserDList(UserDList *uli);
+UserDList * popFrontUserDList(UserDList * const uli);
 
 /**
  * @brief Removes a specific user from a user dlist
@@ -113,7 +113,7 @@ UserDList *popFrontUserDList(UserDList *uli);
  * @param usr {user} : the user that will be removed
  * @return UserDList
  */
-UserDList *popUserFromDList(UserDList *uli, user *usr);
+UserDList * popUserFromDList(UserDList * const uli, user * const usr);
 
 /**
  * @brief Finds a user in a user dlist based on its name
@@ -122,21 +122,21 @@ UserDList *popUserFromDList(UserDList *uli, user *usr);
  * @param usrName {const signed char} : user name
  * @return UserDListNode : found user or NULL
  */
-UserDListNode *findUserNodeByName(UserDList *uli, const signed char usrName);
+UserDListNode * findUserNodeByName(UserDList * const uli, char const * const usrName);
 
 /**
  * @brief Prints the content of a user dlist : username + user expense sum
  *
  * @param eli {UserDlist} : list to print
  */
-void printUserDList(UserDList *uli);
+void printUserDList(UserDList * const uli);
 
 /**
  * @brief Prints the content of a user dlist : username only
  *
  * @param eli {UserDlist} : list to print
  */
-void printUserNames(UserDList *uli);
+void printUserNames(UserDList * const uli);
 
 /**
  * @brief Clears an user dlist content
