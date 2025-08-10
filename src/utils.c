@@ -102,7 +102,7 @@ void *xmalloc(size_t size, char const * const err)
   if (p == NULL)
   {
     fprintf(stderr, "%s", err);
-    return EXIT_FAILURE;
+    exit(EXIT_FAILURE);
   }
 
   return p;
