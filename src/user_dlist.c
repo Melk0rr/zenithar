@@ -240,14 +240,14 @@ UserDList * popUserFromDList(UserDList * uli, user * const usr)
     return newUserDList();
   }
 
-  UserDListNode * temp = uli->begin;
+  UserDListNode * tmp = uli->begin;
 
-  while (temp != NULL && &temp->nodeUser != &usr)
+  while (tmp != NULL && &tmp->nodeUser != &usr)
   {
-    temp = temp->next;
+    tmp = tmp->next;
   }
 
-  if (temp == NULL)
+  if (!tmp)
   {
     printf("popUserFromDList::Could not find the user to pop");
     return uli;
@@ -262,28 +262,28 @@ UserDList * popUserFromDList(UserDList * uli, user * const usr)
     return newUserDList();
   }
   // If first in list
-  else if (temp->prev == NULL)
+  else if (!tmp->prev)
   {
-    uli->begin = temp->next;
+    uli->begin = tmp->next;
     uli->begin->prev = NULL;
   }
   // If last in list
-  else if (temp->next == NULL)
+  else if (tmp->next == NULL)
   {
-    uli->end = temp->prev;
+    uli->end = tmp->prev;
     uli->end->next = NULL;
   }
   else
   {
     // Pointing previous node to the next and vice versa
-    temp->prev->next = temp->next;
-    temp->next->prev = temp->prev;
+    tmp->prev->next = tmp->next;
+    tmp->next->prev = tmp->prev;
 
-    temp->prev = NULL;
-    temp->next = NULL;
+    tmp->prev = NULL;
+    tmp->next = NULL;
 
-    free(temp);
-    temp = NULL;
+    free(tmp);
+    tmp = NULL;
   }
 
   uli->length--;
