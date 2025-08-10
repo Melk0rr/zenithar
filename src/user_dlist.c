@@ -67,7 +67,7 @@ user * getLastUserDListNode(UserDList * uli)
 }
 
 // Function to push a new user at the end of an user dlist : see user_dlist.h
-UserDList * pushBackUserDList(UserDList * uli, user * usr)
+UserDList * pushBackUserDList(UserDList * uli, user * const usr)
 {
   UserDListNode * usrNode = malloc(sizeof(*usrNode));
 
@@ -118,7 +118,7 @@ UserDList * pushBackUserDList(UserDList * uli, user * usr)
 
 // Function to push a new user at the beginning of an user dlist : see
 // user_dlist.h
-UserDList * pushFrontUserDList(UserDList * uli, user * usr)
+UserDList * pushFrontUserDList(UserDList * uli, user * const usr)
 {
   UserDListNode * usrNode = (UserDListNode *)malloc(sizeof(*usrNode));
 
@@ -243,7 +243,7 @@ UserDList * popFrontUserDList(UserDList * uli)
 }
 
 // Function to remove a specific user from a user dlist : see user_dlist.h
-UserDList * popUserFromDList(UserDList * uli, user * usr)
+UserDList * popUserFromDList(UserDList * uli, user * const usr)
 {
   if (isUserDListEmpty(uli))
   {
@@ -330,7 +330,7 @@ UserDList * clearUserDlist(UserDList * uli)
 }
 
 // Function to print the content of an user dlist : see user_dlist.h
-void printUserDList(UserDList * uli)
+void printUserDList(UserDList * const uli)
 {
   if (isUserDListEmpty(uli))
   {
@@ -348,7 +348,7 @@ void printUserDList(UserDList * uli)
 }
 
 // Function to print the names of the users in a user dlist : see user_dlist.h
-void printUserNames(UserDList * uli)
+void printUserNames(UserDList * const uli)
 {
   if (isUserDListEmpty(uli))
   {

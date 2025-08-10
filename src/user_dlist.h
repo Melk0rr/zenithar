@@ -79,7 +79,7 @@ user * getLastUserDListNode(UserDList * const uli);
  * @param usr {user} : user to push
  * @return UserDList
  */
-UserDList * pushBackUserDList(UserDList * const uli, user * const usr);
+UserDList * pushBackUserDList(UserDList * uli, user * const usr);
 
 /**
  * @brief Pushes a user node at the beginning of the given user dlist
@@ -88,7 +88,7 @@ UserDList * pushBackUserDList(UserDList * const uli, user * const usr);
  * @param usr {user} : user to push
  * @return UserDList
  */
-UserDList * pushFrontUserDList(UserDList * const uli, user * const usr);
+UserDList * pushFrontUserDList(UserDList * uli, user * const usr);
 
 /**
  * @brief Pops an user node from the end of the given user dlist
@@ -96,7 +96,7 @@ UserDList * pushFrontUserDList(UserDList * const uli, user * const usr);
  * @param uli {UserDList} : user dlist from which a node will be poped
  * @return UserDList
  */
-UserDList * popBackUserDList(UserDList * const uli);
+UserDList * popBackUserDList(UserDList * uli);
 
 /**
  * @brief Pops an user node from the beginning of the given user dlist
@@ -104,7 +104,7 @@ UserDList * popBackUserDList(UserDList * const uli);
  * @param uli {UserDList} : user dlist from which a node will be poped
  * @return UserDList
  */
-UserDList * popFrontUserDList(UserDList * const uli);
+UserDList * popFrontUserDList(UserDList * uli);
 
 /**
  * @brief Removes a specific user from a user dlist
@@ -113,7 +113,7 @@ UserDList * popFrontUserDList(UserDList * const uli);
  * @param usr {user} : the user that will be removed
  * @return UserDList
  */
-UserDList * popUserFromDList(UserDList * const uli, user * const usr);
+UserDList * popUserFromDList(UserDList * uli, user * const usr);
 
 /**
  * @brief Finds a user in a user dlist based on its name
@@ -122,7 +122,8 @@ UserDList * popUserFromDList(UserDList * const uli, user * const usr);
  * @param usrName {const signed char} : user name
  * @return UserDListNode : found user or NULL
  */
-UserDListNode * findUserNodeByName(UserDList * const uli, char const * const usrName);
+UserDListNode * findUserNodeByName(UserDList * const uli,
+                                   char const * const usrName);
 
 /**
  * @brief Prints the content of a user dlist : username + user expense sum
