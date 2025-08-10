@@ -10,7 +10,7 @@
  */
 typedef struct expense
 {
-  char expenseName[20];
+  char expenseName[50];
   float expenseCost;
 } expense;
 
