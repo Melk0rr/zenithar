@@ -15,7 +15,7 @@
  * @param bufferSize {int} : size of the buffer
  * @return signed char
  */
-void getSecureInput(char *prompt, char *buffer, int bufferSize);
+void getSecureInput(char * prompt, char * buffer, int bufferSize);
 
 /**
  * @brief Ask user specifically for an int
@@ -24,7 +24,7 @@ void getSecureInput(char *prompt, char *buffer, int bufferSize);
  * @param bufferSize {int} : buffer size
  * @return int : input integer
  */
-int getSecureInputInt(char *prompt, int bufferSize);
+int getSecureInputInt(char * prompt, int bufferSize);
 
 /**
  * @brief Ask user specifically for a signed char (string)
@@ -33,7 +33,7 @@ int getSecureInputInt(char *prompt, int bufferSize);
  * @param bufferSize {int} : size of the buffer
  * @return signed char : input string
  */
-signed char *getSecureInputString(char *prompt, size_t bufferSize);
+signed char * getSecureInputString(char * prompt, size_t bufferSize);
 
 /**
  * @brief Tries to allocate memory with given size and check if memory was
@@ -42,7 +42,7 @@ signed char *getSecureInputString(char *prompt, size_t bufferSize);
  * @param size {size_t} : size of memory to alloc
  * @return void*
  */
-void *xmalloc(size_t const size, char const * const err);
+void * xmalloc(size_t const size, char const * const err);
 
 /**
  * @brief Prints text in specified color
@@ -50,41 +50,41 @@ void *xmalloc(size_t const size, char const * const err);
  * @param text {const char *} : text to print
  * @param color {const char *} : color value
  */
-void printInColor(const char *text, const char *color);
+void printInColor(char const * text, char const * color);
 
 /**
  * @brief Prints text in white
  *
  * @param text {const char *} : text to print
  */
-void printWhite(const char *text);
+void printWhite(char const * text);
 
 /**
  * @brief Prints text in red
  *
  * @param text {const char *} : text to print
  */
-void printRed(const char *text);
+void printRed(char const * text);
 
 /**
  * @brief Prints text in green
  *
  * @param text {const char *} : text to print
  */
-void printGreen(const char *text);
+void printGreen(char const * text);
 
 /**
  * @brief Prints text in yellow
  *
  * @param text {const char *} : text to print
  */
-void printYellow(const char *test);
+void printYellow(char const * test);
 
 /**
  * @brief Prints text in blue
  *
  * @param text {const char *} : text to print
  */
-void printBlue(const char *text);
+void printBlue(char const * text);
 
 #endif
