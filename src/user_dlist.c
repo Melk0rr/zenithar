@@ -256,6 +256,7 @@ UserDList * popUserFromDList(UserDList * uli, user * const usr)
   // If list only contains one element
   if (uli->begin == uli->end)
   {
+    free(uli->begin->nodeUser);
     free(uli);
     uli = NULL;
 
@@ -282,6 +283,7 @@ UserDList * popUserFromDList(UserDList * uli, user * const usr)
     tmp->prev = NULL;
     tmp->next = NULL;
 
+    free(tmp->nodeUser);
     free(tmp);
     tmp = NULL;
   }
