@@ -59,8 +59,7 @@ expense * getLastExpenseDListNode(ExpenseDList * const eli)
 
 // Function to push a new expense at the end of an expense dlist : see
 // expense_dlist.h
-ExpenseDList * pushBackExpenseDList(ExpenseDList * eli,
-                                    expense * const exp)
+ExpenseDList * pushBackExpenseDList(ExpenseDList * eli, expense * const exp)
 {
   ExpenseDListNode * expNode =
       xmalloc(sizeof(*expNode), "pushBackExpenseDList::Memory allocation "
@@ -103,14 +102,9 @@ ExpenseDList * pushBackExpenseDList(ExpenseDList * eli,
 // expense_dlist.h
 ExpenseDList * pushFrontExpenseDList(ExpenseDList * eli, expense * exp)
 {
-  ExpenseDListNode * expNode = malloc(sizeof(*expNode));
-
-  if (expNode == NULL)
-  {
-    fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for new "
-                    "ExpenseDListNode !");
-    exit(1);
-  }
+  ExpenseDListNode * expNode =
+      xmalloc(sizeof(*expNode), "pushFrontExpenseDList::Memory allocation "
+                                "failed for new ExpenseDListNode !");
 
   expNode->nodeExpense = exp;
   expNode->prev = NULL;
@@ -118,14 +112,8 @@ ExpenseDList * pushFrontExpenseDList(ExpenseDList * eli, expense * exp)
 
   if (isExpenseDListEmpty(eli))
   {
-    eli = malloc(sizeof(*eli));
-
-    if (eli == NULL)
-    {
-      fprintf(stderr, "pushFrontExpenseDList::Memory allocation failed for "
-                      "empty ExpenseList !");
-      exit(1);
-    }
+    eli = xmalloc(sizeof(*eli), "pushFrontExpenseDList::Memory allocation "
+                                "failed for empty ExpenseList !");
 
     // If dlist is empty : new node is the first and last element
     eli->begin = expNode;
