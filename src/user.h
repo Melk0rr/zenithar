@@ -37,7 +37,8 @@ user * createUser(char const * const usrName);
  * @param usr {user} : user to whom add the new expense
  * @param exp {expense} : new expense to add
  */
-void addNewUserExpense(user * const usr, char const * const expName, float const expCost);
+void addNewUserExpense(user * const usr, char const * const expName,
+                       float const expCost);
 
 /**
  * @brief Returns the given user expense sum

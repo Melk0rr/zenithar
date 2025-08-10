@@ -24,7 +24,8 @@ user * createUser(char const * const usrName)
 }
 
 // Adds an expense to user expense dlist : see user.h
-void addNewUserExpense(user * const usr, char const * const expName, float const expCost)
+void addNewUserExpense(user * const usr, char const * const expName,
+                       float const expCost)
 {
   // Add new expense
   expense * newExp = createExpense(expName, expCost);
