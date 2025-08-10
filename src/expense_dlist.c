@@ -308,9 +308,7 @@ void printExpenseDList(ExpenseDList * const eli)
 ExpenseDList * clearExpenseDlist(ExpenseDList * eli)
 {
   while (!isExpenseDListEmpty(eli))
-  {
     eli = popBackExpenseDList(eli);
-  }
 
   return newExpenseDList();
 }
