@@ -162,6 +162,7 @@ ExpenseDList * popBackExpenseDList(ExpenseDList * eli)
   // Check if the list contains only one element
   if (eli->begin == eli->end)
   {
+    free(eli->begin->nodeExpense);
     free(eli);
     eli = NULL;
 
@@ -203,6 +204,7 @@ ExpenseDList * popFrontExpenseDList(ExpenseDList * eli)
   // Check if the list contains only one element
   if (eli->begin == eli->end)
   {
+    free(eli->begin->nodeExpense);
     free(eli);
     eli = NULL;
 
