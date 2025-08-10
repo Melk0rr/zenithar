@@ -60,15 +60,9 @@ user * getLastUserDListNode(UserDList * uli)
 // Function to push a new user at the end of an user dlist : see user_dlist.h
 UserDList * pushBackUserDList(UserDList * uli, user * const usr)
 {
-  UserDListNode * usrNode = malloc(sizeof(*usrNode));
-
-  if (usrNode == NULL)
-  {
-    fprintf(
-        stderr,
-        "pushBackUserDList::Memory allocation failed for new UserDListNode !");
-    exit(1);
-  }
+  UserDListNode * usrNode = xmalloc(
+      sizeof(*usrNode),
+      "pushBackUserDList::Memory allocation failed for new UserDListNode !");
 
   usrNode->nodeUser = usr;
   usrNode->prev = NULL;
@@ -76,15 +70,7 @@ UserDList * pushBackUserDList(UserDList * uli, user * const usr)
 
   if (isUserDListEmpty(uli))
   {
-    uli = malloc(sizeof(*uli));
-
-    if (uli == NULL)
-    {
-      fprintf(
-          stderr,
-          "pusBackUserDList::Memory allocation failed for empty UserList !");
-      exit(1);
-    }
+    uli = xmalloc(sizeof(*uli), "pusBackUserDList::Memory allocation failed for empty UserList !");
 
     // If dlist is empty : new node is the first and last element
     uli->begin = usrNode;
@@ -111,14 +97,9 @@ UserDList * pushBackUserDList(UserDList * uli, user * const usr)
 // user_dlist.h
 UserDList * pushFrontUserDList(UserDList * uli, user * const usr)
 {
-  UserDListNode * usrNode = (UserDListNode *)malloc(sizeof(*usrNode));
-
-  if (usrNode == NULL)
-  {
-    fprintf(stderr, "pushFrontUserDList::Memory allocation failed for new "
-                    "UserDListNode !");
-    exit(1);
-  }
+  UserDListNode * usrNode = xmalloc(
+      sizeof(*usrNode),
+      "pushFrontUserDList::Memory allocation failed for new UserDListNode !");
 
   usrNode->nodeUser = usr;
   usrNode->prev = NULL;
@@ -126,15 +107,9 @@ UserDList * pushFrontUserDList(UserDList * uli, user * const usr)
 
   if (isUserDListEmpty(uli))
   {
-    uli = malloc(sizeof(*uli));
-
-    if (uli == NULL)
-    {
-      fprintf(
-          stderr,
-          "pushFrontUserDList::Memory allocation failed for empty UserList !");
-      exit(1);
-    }
+    uli = xmalloc(
+        sizeof(*uli),
+        "pushFrontUserDList::Memory allocation failed for empty UserList !");
 
     // If dlist is empty : new node is the first and last element
     uli->begin = usrNode;
@@ -273,7 +248,7 @@ UserDList * popUserFromDList(UserDList * uli, user * const usr)
     uli->begin->prev = NULL;
   }
   // If last in list
-  else if (tmp->next == NULL)
+  else if (!tmp->next)
   {
     uli->end = tmp->prev;
     uli->end->next = NULL;
