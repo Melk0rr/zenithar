@@ -14,7 +14,7 @@
 typedef struct user
 {
   // Name of the user
-  char userName[25];
+  char userName[30];
 
   // List of the user expenses
   ExpenseDList expenseList;
