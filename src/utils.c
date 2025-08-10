@@ -70,7 +70,7 @@ int getSecureInputInt(char *prompt, int bufferSize)
 }
 
 // Ask user input for a signed char : see zenithar.h
-signed char *getSecureInputSignedChar(char *prompt, size_t bufferSize)
+signed char *getSecureInputString(char *prompt, size_t bufferSize)
 {
   char buffer[bufferSize];
   signed char *userInput;

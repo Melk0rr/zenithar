@@ -33,7 +33,7 @@ int getSecureInputInt(char *prompt, int bufferSize);
  * @param bufferSize {int} : size of the buffer
  * @return signed char : input string
  */
-signed char *getSecureInputSignedChar(char *prompt, size_t bufferSize);
+signed char *getSecureInputString(char *prompt, size_t bufferSize);
 
 /**
  * @brief Tries to allocate memory with given size and check if memory was
