@@ -23,25 +23,12 @@ UserDList * const newUserDList()
 }
 
 // Function check if a User dlist is empty : see user_dlist.h
-bool isUserDListEmpty(UserDList * uli)
-{
-  if (uli == NULL || uli->end == NULL)
-  {
-    return true;
-  }
-
-  return false;
-}
+bool isUserDListEmpty(UserDList * uli) { return (!uli || !uli->end); }
 
 // Function to return user dlist length : see user_dlist.h
 int userDListLength(UserDList * uli)
 {
-  if (isUserDListEmpty(uli))
-  {
-    return 0;
-  }
-
-  return uli->length;
+  return (isUserDListEmpty(uli)) ? 0 : uli->length;
 }
 
 // Function to retreive first element of user dlist : see user_dlist.h
