@@ -81,7 +81,7 @@ static float sumGroupExpenses(group * const grp)
     fprintf(
         stderr,
         "sumGroupExpenses::Member list is empty, no expense sum to compute\n");
-    exit(1);
+    return grpExpSum;
   }
 
   UserDListNode * temp = grp->members->begin;
@@ -107,7 +107,7 @@ static float getShare(group * grp)
   if (isUserDListEmpty(grp->members))
   {
     fprintf(stderr, "getShare::Member list is empty, no share to compute\n");
-    exit(1);
+    return share;
   }
 
   share = sumOfGrpExpenses / grp->members->length;
