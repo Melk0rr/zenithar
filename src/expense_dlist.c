@@ -222,6 +222,7 @@ ExpenseDList * popFrontExpenseDList(ExpenseDList * eli)
   tmp->prev = NULL;
   eli->sum -= tmp->nodeExpense->expenseCost;
 
+  free(tmp->nodeExpense);
   free(tmp);
   tmp = NULL;
 
