@@ -203,6 +203,7 @@ UserDList * popFrontUserDList(UserDList * uli)
   // Check if the list contains only one element
   if (uli->begin == uli->end)
   {
+    free(uli->begin->nodeUser);
     free(uli);
     uli = NULL;
 
@@ -221,6 +222,7 @@ UserDList * popFrontUserDList(UserDList * uli)
   tmp->next = NULL;
   tmp->prev = NULL;
 
+  free(tmp->nodeUser);
   free(tmp);
   tmp = NULL;
 
