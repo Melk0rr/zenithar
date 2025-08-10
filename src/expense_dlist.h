@@ -80,7 +80,7 @@ expense * getLastExpenseDListNode(ExpenseDList * const eli);
  * @param exp {expense} : expense to push
  * @return ExpenseDList
  */
-ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli, expense * const exp);
+ExpenseDList * pushBackExpenseDList(ExpenseDList * eli, expense * const exp);
 
 /**
  * @brief Pushes an expense node at the beginning of the given expense dlist
@@ -89,7 +89,7 @@ ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli, expense * const ex
  * @param exp {expense} : expense to push
  * @return ExpenseDList
  */
-ExpenseDList * pushFrontExpenseDList(ExpenseDList * const eli, expense * const exp);
+ExpenseDList * pushFrontExpenseDList(ExpenseDList * eli, expense * const exp);
 
 /**
  * @brief Pops an expense node from the end of the given expense dlist
@@ -97,7 +97,7 @@ ExpenseDList * pushFrontExpenseDList(ExpenseDList * const eli, expense * const e
  * @param eli {ExpenseDList} : expense dlist from which a node will be poped
  * @return ExpenseDList
  */
-ExpenseDList * popBackExpenseDList(ExpenseDList * const eli);
+ExpenseDList * popBackExpenseDList(ExpenseDList * eli);
 
 /**
  * @brief Pops an expense node from the beginning of the given expense dlist
@@ -105,7 +105,7 @@ ExpenseDList * popBackExpenseDList(ExpenseDList * const eli);
  * @param eli {ExpenseDList} : expense dlist from which a node will be poped
  * @return ExpenseDList
  */
-ExpenseDList * popFrontExpenseDList(ExpenseDList * const eli);
+ExpenseDList * popFrontExpenseDList(ExpenseDList * eli);
 
 /**
  * @brief Removes a specific expense from an expense dlist
@@ -115,14 +115,14 @@ ExpenseDList * popFrontExpenseDList(ExpenseDList * const eli);
  * @param exp {Expense} : the expense that will be removed
  * @return ExpenseDList
  */
-ExpenseDList * popExpenseFromDList(ExpenseDList * const eli, expense * const exp);
+ExpenseDList * popExpenseFromDList(ExpenseDList * eli, expense * const exp);
 
 /**
  * @brief Prints the content of an expense dlist
  *
  * @param eli {ExpenseDlist} : list to print
  */
-void printExpenseDList(ExpenseDList * eli);
+void printExpenseDList(ExpenseDList * const eli);
 
 /**
  * @brief Clears an expense dlist content
@@ -130,6 +130,6 @@ void printExpenseDList(ExpenseDList * eli);
  * @param eli {ExpenseDlist} : expense dlist to clear
  * @return ExpenseDList
  */
-ExpenseDList * clearExpenseDlist(ExpenseDList * const eli);
+ExpenseDList * clearExpenseDlist(ExpenseDList * eli);
 
 #endif

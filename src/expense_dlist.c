@@ -59,7 +59,7 @@ expense * getLastExpenseDListNode(ExpenseDList * const eli)
 
 // Function to push a new expense at the end of an expense dlist : see
 // expense_dlist.h
-ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli,
+ExpenseDList * pushBackExpenseDList(ExpenseDList * eli,
                                     expense * const exp)
 {
   ExpenseDListNode * expNode =
@@ -73,7 +73,8 @@ ExpenseDList * pushBackExpenseDList(ExpenseDList * const eli,
   if (isExpenseDListEmpty(eli))
   {
     // TODO: check this part : maybe no need to allocate mem again
-    eli = xmalloc(sizeof(*eli), "pushBackExpenseDList::Memory allocation failed for empty ExpenseList !");
+    eli = xmalloc(sizeof(*eli), "pushBackExpenseDList::Memory allocation "
+                                "failed for empty ExpenseList !");
 
     // If dlist is empty : new node is the first and last element
     eli->begin = expNode;
@@ -230,7 +231,7 @@ ExpenseDList * popFrontExpenseDList(ExpenseDList * eli)
 
 // Function to remove a specific expense from an expense dlist : see
 // expense_dlist.h
-ExpenseDList * popExpenseFromDList(ExpenseDList * eli, expense * exp)
+ExpenseDList * popExpenseFromDList(ExpenseDList * eli, expense * const exp)
 {
   if (isExpenseDListEmpty(eli))
   {
@@ -283,7 +284,7 @@ ExpenseDList * popExpenseFromDList(ExpenseDList * eli, expense * exp)
 }
 
 // Function to print the content of an expense dlist : see expense_dlist.h
-void printExpenseDList(ExpenseDList * eli)
+void printExpenseDList(ExpenseDList * const eli)
 {
   if (isExpenseDListEmpty(eli))
   {
