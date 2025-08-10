@@ -36,6 +36,8 @@ user * getFirstUserDListNode(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
+    fprintf(stderr, "getFirstUserDListNode::DList is empty, could not "
+                    "retrieve first user node");
     exit(1);
   }
 
@@ -47,6 +49,8 @@ user * getLastUserDListNode(UserDList * uli)
 {
   if (isUserDListEmpty(uli))
   {
+    fprintf(stderr, "getLastUserDListNode::DList is empty, could not retrieve "
+                    "last user node");
     exit(1);
   }
 
