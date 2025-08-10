@@ -95,7 +95,7 @@ signed char *getSecureInputString(char *prompt, size_t bufferSize)
 // INFO: Malloc utils
 
 // Function to check malloc : see utils.h
-void *xmalloc(size_t size, char const * const err)
+void *xmalloc(size_t const size, char const * const err)
 {
   void *p = malloc(size);
 
