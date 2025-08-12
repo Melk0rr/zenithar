@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 // Function to create an empty user dlist : see user_dlist.h
-UserDList * const newUserDList()
+UserDList * newUserDList()
 {
   UserDList * newList =
       xmalloc(sizeof(*newList),

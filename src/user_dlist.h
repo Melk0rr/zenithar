@@ -37,7 +37,7 @@ typedef struct UserDList
  *
  * @return UserDList : new empty list
  */
-UserDList * const newUserDList(void);
+UserDList * newUserDList(void);
 
 /**
  * @brief Checks if a user dlist is empty
